@@ -1,9 +1,18 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Code, Server, Settings, Palette, Brain, Zap } from 'lucide-react';
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const skillCategories = [
     {
@@ -62,22 +71,33 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-20 px-4 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Enhanced Background Elements with Mouse Tracking */}
       <div className="absolute inset-0 bg-dots opacity-5"></div>
-      <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+      <div 
+        className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"
+        style={{
+          transform: `translate(${mousePosition.x * 0.03}px, ${mousePosition.y * 0.03}px)`,
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float"
+        style={{
+          transform: `translate(${mousePosition.x * -0.02}px, ${mousePosition.y * -0.02}px)`,
+          animationDelay: '2s'
+        }}
+      ></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-20">
           <div className="inline-block mb-6">
-            <span className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full text-purple-400 font-semibold border border-purple-500/30 backdrop-blur-sm">
+            <span className="px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full text-purple-400 font-semibold border border-purple-500/30 backdrop-blur-sm">
               Technical Expertise
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
             Skills & Technologies
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Proficient in modern web technologies and development tools with hands-on experience in building scalable applications
           </p>
         </div>
