@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Code, Server, Tool, Palette, Brain, Zap } from 'lucide-react';
+import { Code, Server, Settings, Palette, Brain, Zap } from 'lucide-react';
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -38,7 +38,7 @@ const Skills = () => {
     },
     {
       title: "Tools & Platforms",
-      icon: <Tool className="w-6 h-6" />,
+      icon: <Settings className="w-6 h-6" />,
       color: "from-purple-500 to-pink-500",
       bgColor: "from-purple-500/10 to-pink-500/10",
       skills: [
