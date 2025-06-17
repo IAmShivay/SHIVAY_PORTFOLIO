@@ -123,6 +123,26 @@
   }
 }
 
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(139, 92, 246, 0.3);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes pulse-glow {
   0%, 100% {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
@@ -218,6 +238,14 @@
   animation: rotate-slow 20s linear infinite;
 }
 
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -308,4 +336,239 @@ html {
 .bg-dots {
   background-image: radial-gradient(circle, rgba(59, 130, 246, 0.2) 1px, transparent 1px);
   background-size: 30px 30px;
+}
+
+/* Enhanced Responsive Utilities */
+@media (max-width: 640px) {
+  .bg-dots {
+    background-size: 20px 20px;
+  }
+
+  .bg-grid {
+    background-size: 30px 30px;
+  }
+
+  .card-3d:hover {
+    transform: rotateY(2deg) rotateX(2deg) translateZ(10px);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .bg-dots {
+    background-size: 25px 25px;
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .card-3d:hover {
+    transform: none;
+  }
+
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.05);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-shimmer,
+  .animate-gradient,
+  .animate-bounce-subtle,
+  .animate-rotate-slow {
+    animation: none;
+  }
+
+  .card-3d:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Enhanced Mobile Optimizations */
+@media (max-width: 640px) {
+  /* Improved touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile */
+  .mobile-spacing {
+    padding: 1rem;
+  }
+
+  /* Optimized text sizes */
+  .mobile-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .mobile-text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .mobile-text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  /* Enhanced button styles for mobile */
+  .mobile-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* Better card spacing */
+  .mobile-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  /* Improved navigation for mobile */
+  .mobile-nav {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* Better form elements */
+  .mobile-input {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    min-height: 48px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tablet-spacing {
+    padding: 1.5rem;
+  }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+
+  /* Remove hover effects that don't work on touch */
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+
+  .hover\:scale-110:hover {
+    transform: scale(1.05);
+  }
+
+  /* Better focus states for touch */
+  button:focus, a:focus, input:focus, select:focus, textarea:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  /* Improved tap highlights */
+  * {
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.2);
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix viewport height issues */
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Fix input zoom on iOS */
+  input[type="text"], input[type="email"], input[type="tel"], textarea {
+    font-size: 16px;
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* Better scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Enhanced cursor interactions */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Remove any cursor interference */
+
+/* Interactive elements */
+.interactive-element {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.interactive-element:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Magnetic effect for buttons */
+.magnetic-button {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic-button:hover {
+  transform: scale(1.05);
+}
+
+/* Glitch effect for special elements */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch-effect:hover {
+  animation: glitch 0.3s ease-in-out;
 }
