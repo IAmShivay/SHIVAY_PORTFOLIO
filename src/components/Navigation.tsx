@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Code2, User, Briefcase, Wrench, FolderOpen, MessageCircle } from 'lucide-react';
+import { Menu, X, Code2, User, Briefcase, Wrench, Award, FolderOpen, MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 
 const Navigation = () => {
@@ -12,7 +12,7 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
 
       // Detect active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'skills', 'certifications', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -38,9 +38,22 @@ const Navigation = () => {
     { name: 'About', href: '#about', icon: User, section: 'about' },
     { name: 'Experience', href: '#experience', icon: Briefcase, section: 'experience' },
     { name: 'Skills', href: '#skills', icon: Wrench, section: 'skills' },
+    { name: 'Certifications', href: '#certifications', icon: Award, section: 'certifications' },
     { name: 'Projects', href: '#projects', icon: FolderOpen, section: 'projects' },
     { name: 'Contact', href: '#contact', icon: MessageCircle, section: 'contact' },
   ];
+
+  // Smooth scroll function without hash in URL
+  const scrollToSection = (sectionId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -61,9 +74,9 @@ const Navigation = () => {
               const IconComponent = item.icon;
               const isActive = activeSection === item.section;
               return (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
+                  onClick={(e) => scrollToSection(item.section, e)}
                   className={`group relative flex items-center gap-2.5 px-4 py-2.5 transition-all duration-300 rounded-full cursor-pointer ${
                     isActive
                       ? 'text-white bg-blue-500/30 shadow-lg shadow-blue-500/20'
@@ -85,7 +98,7 @@ const Navigation = () => {
                   <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full transition-opacity duration-300 ${
                     isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                   }`}></div>
-                </a>
+                </button>
               );
             })}
           </div>
@@ -96,9 +109,9 @@ const Navigation = () => {
               const IconComponent = item.icon;
               const isActive = activeSection === item.section;
               return (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
+                  onClick={(e) => scrollToSection(item.section, e)}
                   className={`group relative flex items-center justify-center p-2.5 transition-all duration-300 rounded-full cursor-pointer ${
                     isActive
                       ? 'text-white bg-blue-500/30 shadow-lg'
@@ -117,7 +130,7 @@ const Navigation = () => {
                   <div className={`absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full transition-opacity duration-300 ${
                     isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                   }`}></div>
-                </a>
+                </button>
               );
             })}
             <button
@@ -156,15 +169,17 @@ const Navigation = () => {
                   const IconComponent = item.icon;
                   const isActive = activeSection === item.section;
                   return (
-                    <a
+                    <button
                       key={item.name}
-                      href={item.href}
-                      className={`group flex items-center gap-4 py-4 px-5 transition-all duration-300 rounded-xl hover:shadow-lg border cursor-pointer ${
+                      onClick={(e) => {
+                        scrollToSection(item.section, e);
+                        setIsOpen(false);
+                      }}
+                      className={`group flex items-center gap-4 py-4 px-5 transition-all duration-300 rounded-xl hover:shadow-lg border cursor-pointer w-full text-left ${
                         isActive
                           ? 'text-white bg-blue-500/30 border-blue-500/50 shadow-lg shadow-blue-500/20'
                           : 'text-gray-300 hover:text-white hover:bg-blue-500/20 border-transparent hover:border-blue-500/30'
                       }`}
-                      onClick={() => setIsOpen(false)}
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
                       <div className={`p-2 rounded-lg transition-all duration-300 ${
@@ -182,7 +197,7 @@ const Navigation = () => {
                         />
                       </div>
                       <span className="font-semibold text-lg">{item.name}</span>
-                    </a>
+                    </button>
                   );
                 })}
               </div>
@@ -215,15 +230,17 @@ const Navigation = () => {
                     const IconComponent = item.icon;
                     const isActive = activeSection === item.section;
                     return (
-                      <a
+                      <button
                         key={item.name}
-                        href={item.href}
-                        className={`group flex items-center gap-3 py-3 px-4 transition-all duration-300 rounded-xl cursor-pointer ${
+                        onClick={(e) => {
+                          scrollToSection(item.section, e);
+                          setIsOpen(false);
+                        }}
+                        className={`group flex items-center gap-3 py-3 px-4 transition-all duration-300 rounded-xl cursor-pointer w-full text-left ${
                           isActive
                             ? 'text-white bg-blue-500/30 shadow-lg'
                             : 'text-gray-300 hover:text-white hover:bg-blue-500/20'
                         }`}
-                        onClick={() => setIsOpen(false)}
                       >
                         <IconComponent
                           size={18}
@@ -234,7 +251,7 @@ const Navigation = () => {
                           }`}
                         />
                         <span className="font-medium">{item.name}</span>
-                      </a>
+                      </button>
                     );
                   })}
                 </div>

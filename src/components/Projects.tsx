@@ -77,7 +77,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 relative overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 bg-grid opacity-5"></div>
       
@@ -99,20 +99,20 @@ const Projects = () => {
 
       <div ref={containerRef} className="max-w-7xl mx-auto relative z-10">
         {/* Enhanced Header */}
-        <div className="text-center mb-20">
-          <div className="relative inline-block mb-8">
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="relative inline-block mb-6 sm:mb-8">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl"></div>
-            <div className="relative flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-500/30 backdrop-blur-sm">
-              <Trophy className="w-6 h-6 text-yellow-400 animate-bounce-subtle" />
-              <span className="text-blue-400 font-bold text-lg">Featured Portfolio</span>
-              <Sparkles className="w-6 h-6 text-purple-400 animate-pulse" />
+            <div className="relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-500/30 backdrop-blur-sm">
+              <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 animate-bounce-subtle" />
+              <span className="text-blue-400 font-bold text-sm sm:text-base lg:text-lg">Featured Portfolio</span>
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 animate-pulse" />
             </div>
           </div>
-          
-          <h2 className="text-6xl md:text-8xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight">
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-black mb-6 sm:mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2">
             Featured Projects
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
             Showcasing cutting-edge solutions with modern technologies, scalable architectures, and innovative user experiences
           </p>
         </div>
@@ -150,13 +150,13 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="relative z-10 p-10">
+                <div className="relative z-10 p-6 sm:p-8 lg:p-10">
                   {/* Header Section */}
                   <div className="flex items-start justify-between mb-8">
                     <div className="flex-1">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="relative">
-                          <h3 className="text-4xl font-black text-white group-hover:text-blue-400 transition-colors duration-300">
+                          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white group-hover:text-blue-400 transition-colors duration-300 leading-tight">
                             {project.title}
                           </h3>
                           <div className="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-500"></div>

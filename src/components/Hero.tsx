@@ -108,16 +108,16 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 px-4 sm:px-6 lg:px-8">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
       />
 
-      {/* 3D Floating Elements - Responsive */}
+      {/* 3D Floating Elements - Responsive with Navbar Spacing */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-16 sm:top-20 left-4 sm:left-10 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-float"></div>
-        <div className="absolute top-32 sm:top-40 right-4 sm:right-20 w-32 sm:w-48 h-32 sm:h-48 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-24 sm:top-32 lg:top-36 left-4 sm:left-10 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-40 sm:top-48 lg:top-52 right-4 sm:right-20 w-32 sm:w-48 h-32 sm:h-48 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
         <div className="absolute bottom-20 sm:bottom-32 left-4 sm:left-20 w-24 sm:w-40 h-24 sm:h-40 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
@@ -125,7 +125,7 @@ const Hero = () => {
         <div className="animate-fade-in">
           <div className="mb-6 sm:mb-8">
             <div className="relative inline-block">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2 cursor-pointer">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2 cursor-pointer">
                 Shiv Kumar
               </h1>
               <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-glow-pulse"></div>
@@ -138,7 +138,7 @@ const Hero = () => {
           </div>
 
           <div className="relative mb-6 sm:mb-8">
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-3 sm:mb-4 animate-slide-up font-semibold px-2" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base xs:text-lg sm:text-xl lg:text-2xl text-gray-300 mb-3 sm:mb-4 animate-slide-up font-semibold px-2 text-center" style={{ animationDelay: '0.2s' }}>
               Full Stack Developer | MERN Stack Specialist
             </p>
             <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto mb-4 sm:mb-6 rounded-full animate-glow-pulse"></div>

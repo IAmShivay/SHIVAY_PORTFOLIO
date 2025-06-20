@@ -73,7 +73,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
       {/* Enhanced Background Elements with Mouse Tracking */}
       <div className="absolute inset-0 bg-grid opacity-5"></div>
       <div 
@@ -93,28 +93,28 @@ const About = () => {
       ></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-16 sm:mb-20">
           <div className="inline-block mb-6">
-            <span className="px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full text-blue-400 font-semibold border border-blue-500/30 backdrop-blur-sm">
+            <span className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full text-blue-400 font-semibold border border-blue-500/30 backdrop-blur-sm text-sm sm:text-base">
               About Me
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2">
             Crafting Digital Excellence
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Full Stack Developer specializing in MERN stack development with proven expertise in creating 
-            responsive web applications and RESTful APIs. Strong problem-solving skills with a commitment 
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
+            Full Stack Developer specializing in MERN stack development with proven expertise in creating
+            responsive web applications and RESTful APIs. Strong problem-solving skills with a commitment
             to delivering high-quality code and exceptional user experiences.
           </p>
         </div>
 
         {/* Enhanced Highlights Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {highlights.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-700/50 hover:border-gray-600 transition-all duration-500 hover:scale-105 card-3d overflow-hidden"
+              className="group relative bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-700/50 hover:border-gray-600 transition-all duration-500 hover:scale-105 card-3d overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
