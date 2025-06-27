@@ -170,7 +170,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1kvmfMeFiURfCOZwEger3jDb0AtqTNQJ4/view?usp=sharing"
             download
             className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gray-800/50 border border-gray-600 rounded-full text-gray-300 font-semibold hover:bg-gray-700/50 hover:border-gray-500 hover:text-white transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto cursor-pointer"
           >
@@ -184,7 +184,7 @@ const Hero = () => {
             { icon: Github, href: "https://github.com/iAmShivay", label: "GitHub", color: "from-gray-600 to-gray-800" },
             { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn", color: "from-blue-600 to-blue-800" },
             { icon: Mail, href: "mailto:shivaysharma77893@gmail.com", label: "Email", color: "from-red-600 to-red-800" },
-            { icon: ExternalLink, href: "https://Shiva-y.live", label: "Website", color: "from-purple-600 to-purple-800" }
+            { icon: ExternalLink, href: "https://infilabs.in", label: "Website", color: "from-purple-600 to-purple-800" }
           ].map(({ icon: Icon, href, label, color }, index) => (
             <a
               key={index}
