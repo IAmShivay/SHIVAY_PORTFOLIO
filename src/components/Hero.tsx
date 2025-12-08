@@ -108,7 +108,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
@@ -121,89 +121,103 @@ const Hero = () => {
         <div className="absolute bottom-20 sm:bottom-32 left-4 sm:left-20 w-24 sm:w-40 h-24 sm:h-40 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="relative z-10 text-center max-w-5xl mx-auto w-full">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="animate-fade-in">
-          <div className="mb-6 sm:mb-8">
-            <div className="relative inline-block">
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2 cursor-pointer">
-                Shiv Kumar
-              </h1>
-              <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-glow-pulse"></div>
-              {/* Additional decorative elements */}
-              <div className="absolute -bottom-2 -left-2 w-3 sm:w-4 lg:w-6 h-3 sm:h-4 lg:h-6 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full animate-pulse delay-500"></div>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 xl:gap-16">
+            {/* Profile Image */}
+            <div className="flex-shrink-0">
+              <img
+                src="https://png.pngtree.com/png-clipart/20231115/original/pngtree-girl-clipart-transparent-background-png-image_13556542.png"
+                alt="Shiv Kumar Sharma"
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover"
+              />
             </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              Sharma
-            </h2>
-          </div>
 
-          <div className="relative mb-6 sm:mb-8">
-            <p className="text-base xs:text-lg sm:text-xl lg:text-2xl text-gray-300 mb-3 sm:mb-4 animate-slide-up font-semibold px-2 text-center" style={{ animationDelay: '0.2s' }}>
-              Full Stack Developer | MERN Stack Specialist
-            </p>
-            <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto mb-4 sm:mb-6 rounded-full animate-glow-pulse"></div>
-          </div>
-
-          <p className="text-base sm:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto animate-slide-up leading-relaxed px-4" style={{ animationDelay: '0.4s' }}>
-            Passionate about creating exceptional web experiences with modern technologies.
-            Specializing in React.js, Node.js, and building scalable applications that make a difference.
-          </p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-14 lg:mb-16 animate-slide-up px-4" style={{ animationDelay: '0.6s' }}>
-          <a
-            href="#projects"
-            className="group relative px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full text-white font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 w-full sm:w-auto text-center cursor-pointer animate-glow-pulse"
-          >
-            <span className="relative z-10">View My Work</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-shimmer"></div>
-          </a>
-
-          <a
-            href="#contact"
-            className="group relative px-8 sm:px-10 py-3 sm:py-4 border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-border rounded-full text-white font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl backdrop-blur-sm w-full sm:w-auto text-center cursor-pointer"
-          >
-            <span className="bg-gray-900 px-6 sm:px-8 py-2 rounded-full block group-hover:bg-transparent transition-colors duration-300">
-              Get In Touch
-            </span>
-          </a>
-
-          <a
-            href="https://drive.google.com/file/d/1kvmfMeFiURfCOZwEger3jDb0AtqTNQJ4/view?usp=sharing"
-            download
-            className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gray-800/50 border border-gray-600 rounded-full text-gray-300 font-semibold hover:bg-gray-700/50 hover:border-gray-500 hover:text-white transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto cursor-pointer"
-          >
-            <Download size={18} className="sm:w-5 sm:h-5 group-hover:animate-bounce" />
-            <span className="text-sm sm:text-base">Resume</span>
-          </a>
-        </div>
-
-        <div className="flex justify-center items-center flex-wrap gap-4 sm:gap-6 lg:gap-8 animate-slide-up px-4" style={{ animationDelay: '0.8s' }}>
-          {[
-            { icon: Github, href: "https://github.com/iAmShivay", label: "GitHub", color: "from-gray-600 to-gray-800" },
-            { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn", color: "from-blue-600 to-blue-800" },
-            { icon: Mail, href: "mailto:shivaysharma77893@gmail.com", label: "Email", color: "from-red-600 to-red-800" },
-            { icon: ExternalLink, href: "https://infilabs.in", label: "Website", color: "from-purple-600 to-purple-800" }
-          ].map(({ icon: Icon, href, label, color }, index) => (
-            <a
-              key={index}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="group relative p-3 sm:p-4 bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-xl sm:rounded-2xl text-gray-400 hover:text-white hover:border-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer"
-              aria-label={label}
-              style={{ animationDelay: `${0.8 + index * 0.1}s` }}
-            >
-              <Icon size={24} className="sm:w-7 sm:h-7 group-hover:animate-pulse" />
-              <div className={`absolute -inset-1 bg-gradient-to-r ${color} rounded-xl sm:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-300`}></div>
-
-              {/* Tooltip */}
-              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                {label}
+            {/* Text Content */}
+            <div className="text-center lg:text-left flex-1">
+              <div className="mb-6 sm:mb-8">
+                <div className="relative inline-block">
+                  <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2 cursor-pointer">
+                    Shiv Kumar
+                  </h1>
+                  <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-glow-pulse"></div>
+                  {/* Additional decorative elements */}
+                  <div className="absolute -bottom-2 -left-2 w-3 sm:w-4 lg:w-6 h-3 sm:h-4 lg:h-6 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full animate-pulse delay-500"></div>
+                </div>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                  Sharma
+                </h2>
               </div>
-            </a>
-          ))}
+
+              <div className="relative mb-6 sm:mb-8">
+                <p className="text-base xs:text-lg sm:text-xl lg:text-2xl text-gray-700 mb-3 sm:mb-4 animate-slide-up font-semibold px-2" style={{ animationDelay: '0.2s' }}>
+                  Full Stack Developer | MERN Stack Specialist
+                </p>
+                <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto lg:mx-0 mb-4 sm:mb-6 rounded-full animate-glow-pulse"></div>
+              </div>
+
+              <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto lg:mx-0 animate-slide-up leading-relaxed px-4 lg:px-0" style={{ animationDelay: '0.4s' }}>
+                Passionate about creating exceptional web experiences with modern technologies.
+                Specializing in React.js, Node.js, and building scalable applications that make a difference.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-12 sm:mb-14 lg:mb-16 animate-slide-up px-4 lg:px-0" style={{ animationDelay: '0.6s' }}>
+                <a
+                  href="#projects"
+                  className="group relative px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full text-white font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 w-full sm:w-auto text-center cursor-pointer animate-glow-pulse"
+                >
+                  <span className="relative z-10">View My Work</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-shimmer"></div>
+                </a>
+
+                <a
+                  href="#contact"
+                  className="group relative px-8 sm:px-10 py-3 sm:py-4 border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-border rounded-full text-white font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl backdrop-blur-sm w-full sm:w-auto text-center cursor-pointer"
+                >
+                  <span className="bg-white px-6 sm:px-8 py-2 rounded-full block group-hover:bg-transparent transition-colors duration-300 text-gray-900 group-hover:text-white">
+                    Get In Touch
+                  </span>
+                </a>
+
+                <a
+                  href="https://drive.google.com/file/d/1kvmfMeFiURfCOZwEger3jDb0AtqTNQJ4/view?usp=sharing"
+                  download
+                  className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gray-200/50 border border-gray-400 rounded-full text-gray-700 font-semibold hover:bg-gray-300/50 hover:border-gray-500 hover:text-gray-900 transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto cursor-pointer"
+                >
+                  <Download size={18} className="sm:w-5 sm:h-5 group-hover:animate-bounce" />
+                  <span className="text-sm sm:text-base">Resume</span>
+                </a>
+              </div>
+
+              <div className="flex justify-center lg:justify-start items-center flex-wrap gap-4 sm:gap-6 lg:gap-8 animate-slide-up px-4 lg:px-0" style={{ animationDelay: '0.8s' }}>
+                {[
+                  { icon: Github, href: "https://github.com/iAmShivay", label: "GitHub", color: "from-gray-600 to-gray-800" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn", color: "from-blue-600 to-blue-800" },
+                  { icon: Mail, href: "mailto:shivaysharma77893@gmail.com", label: "Email", color: "from-red-600 to-red-800" },
+                  { icon: ExternalLink, href: "https://infilabs.in", label: "Website", color: "from-purple-600 to-purple-800" }
+                ].map(({ icon: Icon, href, label, color }, index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    target={href.startsWith('http') ? '_blank' : undefined}
+                    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="group relative p-3 sm:p-4 bg-white/30 backdrop-blur-sm border border-gray-300 rounded-xl sm:rounded-2xl text-gray-600 hover:text-gray-900 hover:border-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer"
+                    aria-label={label}
+                    style={{ animationDelay: `${0.8 + index * 0.1}s` }}
+                  >
+                    <Icon size={24} className="sm:w-7 sm:h-7 group-hover:animate-pulse" />
+                    <div className={`absolute -inset-1 bg-gradient-to-r ${color} rounded-xl sm:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-300`}></div>
+
+                    {/* Tooltip */}
+                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      {label}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
