@@ -1,8 +1,28 @@
-import { useEffect, useRef } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Download } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Download, Sparkles, Code2, Zap } from 'lucide-react';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => container.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -27,15 +47,14 @@ const Hero = () => {
 
     const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981'];
 
-    // Create more dynamic particles
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 100; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        dx: (Math.random() - 0.5) * 0.8,
-        dy: (Math.random() - 0.5) * 0.8,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.8 + 0.2,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.2,
         color: colors[Math.floor(Math.random() * colors.length)],
         speed: Math.random() * 0.02 + 0.01,
       });
@@ -47,22 +66,15 @@ const Hero = () => {
       particles.forEach((particle, index) => {
         particle.x += particle.dx;
         particle.y += particle.dy;
-        particle.opacity += Math.sin(Date.now() * particle.speed + index) * 0.01;
 
-        // Wrap around screen
         if (particle.x < 0) particle.x = canvas.width;
         if (particle.x > canvas.width) particle.x = 0;
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Keep opacity in bounds
-        particle.opacity = Math.max(0.1, Math.min(0.8, particle.opacity));
-
-        // Draw particle with glow effect
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         
-        // Create glow effect
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
           particle.x, particle.y, particle.size * 3
@@ -72,25 +84,6 @@ const Hero = () => {
         
         ctx.fillStyle = gradient;
         ctx.fill();
-        
-        // Draw connections between nearby particles
-        particles.forEach((otherParticle, otherIndex) => {
-          if (index !== otherIndex) {
-            const distance = Math.sqrt(
-              Math.pow(particle.x - otherParticle.x, 2) + 
-              Math.pow(particle.y - otherParticle.y, 2)
-            );
-            
-            if (distance < 100) {
-              ctx.beginPath();
-              ctx.moveTo(particle.x, particle.y);
-              ctx.lineTo(otherParticle.x, otherParticle.y);
-              ctx.strokeStyle = `rgba(59, 130, 246, ${0.1 * (1 - distance / 100)})`;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
-          }
-        });
       });
 
       requestAnimationFrame(animate);
@@ -108,109 +101,161 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28">
+    <section 
+      id="home" 
+      ref={containerRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28"
+    >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-40"
       />
 
-      {/* 3D Floating Elements - Responsive with Navbar Spacing */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-24 sm:top-32 lg:top-36 left-4 sm:left-10 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-float"></div>
-        <div className="absolute top-40 sm:top-48 lg:top-52 right-4 sm:right-20 w-32 sm:w-48 h-32 sm:h-48 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-20 sm:bottom-32 left-4 sm:left-20 w-24 sm:w-40 h-24 sm:h-40 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
+      {/* Gradient Orbs */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-full blur-3xl transition-all duration-700 ease-out"
+          style={{
+            left: mousePosition.x - 192,
+            top: mousePosition.y - 192,
+          }}
+        />
+        <div 
+          className="absolute w-64 h-64 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-full blur-2xl transition-all duration-500"
+          style={{
+            right: mousePosition.x * 0.5,
+            top: mousePosition.y * 0.3,
+          }}
+        />
+      </div>
+
+      {/* Floating Tech Icons */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute top-[15%] left-[8%] opacity-20">
+          <div className="w-16 h-16 bg-white/40 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-xl border border-white/60">
+            <span className="filter drop-shadow-lg">⚛️</span>
+          </div>
+        </div>
+        <div className="absolute top-[20%] right-[10%] opacity-20">
+          <div className="w-20 h-20 bg-white/50 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl shadow-xl border border-white/70">
+            <span className="filter drop-shadow-lg">🔷</span>
+          </div>
+        </div>
+        <div className="absolute bottom-[25%] left-[12%] opacity-20">
+          <div className="w-18 h-18 bg-white/45 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-xl border border-white/65">
+            <span className="filter drop-shadow-lg">🚀</span>
+          </div>
+        </div>
+        <div className="absolute bottom-[20%] right-[15%] opacity-20">
+          <div className="w-16 h-16 bg-white/38 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl shadow-xl border border-white/58">
+            <span className="filter drop-shadow-lg">⚡</span>
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="animate-fade-in">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 xl:gap-16">
-            {/* Profile Image */}
-            <div className="flex-shrink-0">
-              <img
-                src="https://png.pngtree.com/png-clipart/20231115/original/pngtree-girl-clipart-transparent-background-png-image_13556542.png"
-                alt="Shiv Kumar Sharma"
-                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover"
-              />
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 xl:gap-20">
+            {/* Profile Image with Enhanced Card */}
+            <div className="flex-shrink-0 relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500" />
+              <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-sm p-4 sm:p-6 rounded-full border-4 border-white/80 shadow-2xl group-hover:scale-105 transition-all duration-500">
+                <img
+                  src="https://png.pngtree.com/png-clipart/20231115/original/pngtree-girl-clipart-transparent-background-png-image_13556542.png"
+                  alt="Shiv Kumar Sharma"
+                  className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover rounded-full"
+                />
+                {/* Decorative Rings */}
+                <div className="absolute -inset-2 border-2 border-blue-500/30 rounded-full animate-pulse" />
+                <div className="absolute -inset-4 border border-purple-500/20 rounded-full" />
+              </div>
             </div>
 
             {/* Text Content */}
-            <div className="text-center lg:text-left flex-1">
+            <div className="text-center lg:text-left flex-1 max-w-3xl">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-full border border-blue-500/30 backdrop-blur-sm mb-6 sm:mb-8">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                <span className="text-blue-600 font-bold text-sm sm:text-base">Available for Opportunities</span>
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              </div>
+
               <div className="mb-6 sm:mb-8">
                 <div className="relative inline-block">
-                  <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2 cursor-pointer">
+                  <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">
                     Shiv Kumar
                   </h1>
-                  <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-glow-pulse"></div>
-                  {/* Additional decorative elements */}
-                  <div className="absolute -bottom-2 -left-2 w-3 sm:w-4 lg:w-6 h-3 sm:h-4 lg:h-6 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full animate-pulse delay-500"></div>
                 </div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
                   Sharma
                 </h2>
               </div>
 
               <div className="relative mb-6 sm:mb-8">
-                <p className="text-base xs:text-lg sm:text-xl lg:text-2xl text-gray-700 mb-3 sm:mb-4 animate-slide-up font-semibold px-2" style={{ animationDelay: '0.2s' }}>
-                  Full Stack Developer | MERN Stack Specialist
-                </p>
-                <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto lg:mx-0 mb-4 sm:mb-6 rounded-full animate-glow-pulse"></div>
+                <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-100 to-blue-50 rounded-xl border border-gray-300">
+                    <Code2 className="w-5 h-5 text-blue-600" />
+                    <span className="text-gray-700 font-bold text-sm sm:text-base">Full Stack Developer</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-100 to-purple-50 rounded-xl border border-gray-300">
+                    <Zap className="w-5 h-5 text-purple-600" />
+                    <span className="text-gray-700 font-bold text-sm sm:text-base">MERN Stack</span>
+                  </div>
+                </div>
               </div>
 
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto lg:mx-0 animate-slide-up leading-relaxed px-4 lg:px-0" style={{ animationDelay: '0.4s' }}>
+              <p className="text-base sm:text-lg lg:text-xl text-gray-700 mb-8 sm:mb-10 lg:mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 lg:px-0">
                 Passionate about creating exceptional web experiences with modern technologies.
                 Specializing in React.js, Node.js, and building scalable applications that make a difference.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-12 sm:mb-14 lg:mb-16 animate-slide-up px-4 lg:px-0" style={{ animationDelay: '0.6s' }}>
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10 sm:mb-12 px-4 lg:px-0">
                 <a
                   href="#projects"
-                  className="group relative px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full text-white font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 w-full sm:w-auto text-center cursor-pointer animate-glow-pulse"
+                  className="group relative px-8 sm:px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-white font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 w-full sm:w-auto text-center"
                 >
-                  <span className="relative z-10">View My Work</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-shimmer"></div>
-                </a>
-
-                <a
-                  href="#contact"
-                  className="group relative px-8 sm:px-10 py-3 sm:py-4 border-2 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-border rounded-full text-white font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl backdrop-blur-sm w-full sm:w-auto text-center cursor-pointer"
-                >
-                  <span className="bg-white px-6 sm:px-8 py-2 rounded-full block group-hover:bg-transparent transition-colors duration-300 text-gray-900 group-hover:text-white">
-                    Get In Touch
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    View My Work
+                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </a>
 
                 <a
-                  href="https://drive.google.com/file/d/1kvmfMeFiURfCOZwEger3jDb0AtqTNQJ4/view?usp=sharing"
-                  download
-                  className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gray-200/50 border border-gray-400 rounded-full text-gray-700 font-semibold hover:bg-gray-300/50 hover:border-gray-500 hover:text-gray-900 transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto cursor-pointer"
+                  href="#contact"
+                  className="px-8 sm:px-10 py-4 border-2 border-gray-300 rounded-xl text-gray-700 font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:border-blue-400 hover:bg-blue-50 w-full sm:w-auto text-center"
                 >
-                  <Download size={18} className="sm:w-5 sm:h-5 group-hover:animate-bounce" />
+                  Get In Touch
+                </a>
+
+                <a
+                  href="https://drive.google.com/file/d/1kvmfMeFiURfCOZwEger3jDb0AtqTNQJ4/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-gradient-to-r from-gray-100 to-blue-50 border border-gray-300 rounded-xl text-gray-700 font-bold hover:border-blue-400 hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                >
+                  <Download className="w-5 h-5 group-hover:animate-bounce" />
                   <span className="text-sm sm:text-base">Resume</span>
                 </a>
               </div>
 
-              <div className="flex justify-center lg:justify-start items-center flex-wrap gap-4 sm:gap-6 lg:gap-8 animate-slide-up px-4 lg:px-0" style={{ animationDelay: '0.8s' }}>
+              {/* Social Links */}
+              <div className="flex justify-center lg:justify-start items-center flex-wrap gap-3 sm:gap-4 px-4 lg:px-0">
                 {[
-                  { icon: Github, href: "https://github.com/iAmShivay", label: "GitHub", color: "from-gray-600 to-gray-800" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn", color: "from-blue-600 to-blue-800" },
-                  { icon: Mail, href: "mailto:shivaysharma77893@gmail.com", label: "Email", color: "from-red-600 to-red-800" },
-                  { icon: ExternalLink, href: "https://infilabs.in", label: "Website", color: "from-purple-600 to-purple-800" }
-                ].map(({ icon: Icon, href, label, color }, index) => (
+                  { icon: Github, href: "https://github.com/iAmShivay", label: "GitHub" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:shivaysharma77893@gmail.com", label: "Email" },
+                  { icon: ExternalLink, href: "https://infilabs.in", label: "Website" }
+                ].map(({ icon: Icon, href, label }, index) => (
                   <a
                     key={index}
                     href={href}
                     target={href.startsWith('http') ? '_blank' : undefined}
                     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="group relative p-3 sm:p-4 bg-white/30 backdrop-blur-sm border border-gray-300 rounded-xl sm:rounded-2xl text-gray-600 hover:text-gray-900 hover:border-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer"
+                    className="group relative p-4 bg-white/60 backdrop-blur-sm border border-gray-300 rounded-xl text-gray-600 hover:text-blue-600 hover:border-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg"
                     aria-label={label}
-                    style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                   >
-                    <Icon size={24} className="sm:w-7 sm:h-7 group-hover:animate-pulse" />
-                    <div className={`absolute -inset-1 bg-gradient-to-r ${color} rounded-xl sm:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-300`}></div>
-
-                    {/* Tooltip */}
-                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <Icon className="w-6 h-6" />
+                    <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
                       {label}
                     </div>
                   </a>
@@ -221,13 +266,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced scroll indicator - Responsive */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="relative">
-          <div className="w-6 sm:w-8 h-10 sm:h-14 border-2 border-blue-400 rounded-full flex justify-center bg-gradient-to-b from-transparent to-blue-500/10">
-            <div className="w-1.5 sm:w-2 h-3 sm:h-4 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full mt-2 sm:mt-3 animate-pulse"></div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center p-2">
+            <div className="w-1.5 h-3 bg-blue-500 rounded-full animate-bounce" />
           </div>
-          <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur"></div>
+          <span className="text-xs text-gray-600 font-medium">Scroll Down</span>
         </div>
       </div>
     </section>
