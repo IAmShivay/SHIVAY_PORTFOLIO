@@ -27,7 +27,6 @@ const Hero = () => {
 
     const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981'];
 
-    // Create more dynamic particles
     for (let i = 0; i < 150; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -49,20 +48,16 @@ const Hero = () => {
         particle.y += particle.dy;
         particle.opacity += Math.sin(Date.now() * particle.speed + index) * 0.01;
 
-        // Wrap around screen
         if (particle.x < 0) particle.x = canvas.width;
         if (particle.x > canvas.width) particle.x = 0;
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Keep opacity in bounds
         particle.opacity = Math.max(0.1, Math.min(0.8, particle.opacity));
 
-        // Draw particle with glow effect
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         
-        // Create glow effect
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
           particle.x, particle.y, particle.size * 3
@@ -73,7 +68,6 @@ const Hero = () => {
         ctx.fillStyle = gradient;
         ctx.fill();
         
-        // Draw connections between nearby particles
         particles.forEach((otherParticle, otherIndex) => {
           if (index !== otherIndex) {
             const distance = Math.sqrt(
@@ -114,7 +108,6 @@ const Hero = () => {
         className="absolute inset-0 pointer-events-none"
       />
 
-      {/* 3D Floating Elements - Responsive with Navbar Spacing */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-24 sm:top-32 lg:top-36 left-4 sm:left-10 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-float"></div>
         <div className="absolute top-40 sm:top-48 lg:top-52 right-4 sm:right-20 w-32 sm:w-48 h-32 sm:h-48 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
@@ -124,13 +117,18 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="animate-fade-in">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 xl:gap-16">
-            {/* Profile Image */}
-            <div className="flex-shrink-0">
-              <img
-                src="https://png.pngtree.com/png-clipart/20231115/original/pngtree-girl-clipart-transparent-background-png-image_13556542.png"
-                alt="Shiv Kumar Sharma"
-                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover"
-              />
+            {/* Profile Image - Clean Circular */}
+            <div className="flex-shrink-0 relative">
+              <div className="relative">
+                <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                  <img
+                    src="https://res.cloudinary.com/dyiso4ohk/image/upload/e_background_removal/f_png/v1766859570/ChatGPT_Image_Dec_27_2025_11_48_54_PM_nsufpq.png"
+                    alt="Shiv Kumar Sharma"
+                    className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur-2xl opacity-30 -z-10"></div>
+              </div>
             </div>
 
             {/* Text Content */}
@@ -141,7 +139,6 @@ const Hero = () => {
                     Shiv Kumar
                   </h1>
                   <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-glow-pulse"></div>
-                  {/* Additional decorative elements */}
                   <div className="absolute -bottom-2 -left-2 w-3 sm:w-4 lg:w-6 h-3 sm:h-4 lg:h-6 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full animate-pulse delay-500"></div>
                 </div>
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
@@ -208,9 +205,7 @@ const Hero = () => {
                   >
                     <Icon size={24} className="sm:w-7 sm:h-7 group-hover:animate-pulse" />
                     <div className={`absolute -inset-1 bg-gradient-to-r ${color} rounded-xl sm:rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-300`}></div>
-
-                    {/* Tooltip */}
-                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
                       {label}
                     </div>
                   </a>
@@ -221,7 +216,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced scroll indicator - Responsive */}
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="relative">
           <div className="w-6 sm:w-8 h-10 sm:h-14 border-2 border-blue-400 rounded-full flex justify-center bg-gradient-to-b from-transparent to-blue-500/10">
@@ -230,6 +224,8 @@ const Hero = () => {
           <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur"></div>
         </div>
       </div>
+
+
     </section>
   );
 };
