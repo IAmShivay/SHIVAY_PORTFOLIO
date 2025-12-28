@@ -61,7 +61,7 @@ const Navigation = () => {
         : 'bg-gray-50 py-4'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center h-16 sm:h-18 lg:h-20">
+        <div className="flex items-center justify-center md:justify-center h-16 sm:h-18 lg:h-20">
           {/* Desktop Navigation - Enhanced with Active States */}
           <div className="hidden lg:flex items-center space-x-1 bg-white backdrop-blur-md rounded-full px-3 py-2.5 border border-gray-300 shadow-lg">
             {navItems.map((item, index) => {
@@ -137,7 +137,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden">
+          <div className="md:hidden absolute left-4">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="relative p-3 text-gray-600 hover:text-gray-900 transition-all duration-300 bg-white backdrop-blur-md rounded-xl border border-gray-300 shadow-lg hover:shadow-xl hover:scale-105 cursor-pointer group"

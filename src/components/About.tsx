@@ -15,28 +15,28 @@ const About = () => {
 
   const highlights = [
     {
-      icon: <Code className="w-8 h-8" />,
+      icon: <Code className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: "Full Stack Development",
       description: "Expert in MERN stack with proven experience in building scalable applications",
       color: "from-blue-500 to-blue-600",
       stats: "5+ Projects"
     },
     {
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: "Database Optimization",
       description: "Achieved 30% performance improvement through MongoDB query optimization",
       color: "from-blue-500 to-blue-600",
       stats: "30% Faster"
     },
     {
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Globe className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: "API Integration",
       description: "Engineered RESTful APIs improving system interoperability by 40%",
       color: "from-blue-500 to-blue-600",
       stats: "40% Better"
     },
     {
-      icon: <Smartphone className="w-8 h-8" />,
+      icon: <Smartphone className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: "Responsive Design",
       description: "Creating exceptional user experiences across all devices",
       color: "from-blue-500 to-blue-600",
@@ -108,30 +108,30 @@ const About = () => {
           </p>
         </div>
 
-        {/* Enhanced Highlights Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
+        {/* Enhanced Highlights Grid - 2 columns on mobile, 4 on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-16 sm:mb-20">
           {highlights.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-white backdrop-blur-sm p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-300 hover:border-gray-400 transition-all duration-500 hover:scale-105 card-3d overflow-hidden shadow-lg hover:shadow-xl"
+              className="group relative bg-white backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border border-gray-300 hover:border-gray-400 transition-all duration-500 hover:scale-105 card-3d overflow-hidden shadow-lg hover:shadow-xl"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Stats Badge */}
-              <div className="absolute top-4 right-4 px-3 py-1 bg-gray-100 rounded-full border border-gray-300">
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 px-2 sm:px-3 py-1 bg-gray-100 rounded-full border border-gray-300">
                 <span className="text-xs font-bold text-blue-600">{item.stats}</span>
               </div>
               
-              <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${item.color} mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <div className={`inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-r ${item.color} mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                 <div className="text-white">
                   {item.icon}
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
+              <p className="text-xs sm:text-sm lg:text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
                 {item.description}
               </p>
               
@@ -141,78 +141,78 @@ const About = () => {
         </div>
 
         {/* Enhanced Professional Journey Section */}
-        <div className="bg-gradient-to-r from-gray-50 via-blue-50/30 to-gray-50 backdrop-blur-sm p-10 rounded-3xl border border-gray-300 relative overflow-hidden shadow-lg">
+        <div className="bg-gradient-to-r from-gray-50 via-blue-50/30 to-gray-50 backdrop-blur-sm p-6 sm:p-8 lg:p-10 rounded-3xl border border-gray-300 relative overflow-hidden shadow-lg">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
           
-          <h3 className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Professional Journey
           </h3>
           
-          <div className="grid lg:grid-cols-2 gap-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 relative z-10">
             {/* Education Section */}
-            <div className="space-y-8">
-              <h4 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-3">
+            <div className="space-y-6 sm:space-y-8">
+              <h4 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4 sm:mb-6 flex items-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                   <GraduationCap className="w-4 h-4 text-white" />
                 </div>
                 Education
               </h4>
-              <div className="space-y-6">
-                <div className="group bg-white p-6 rounded-xl border border-gray-300 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="group bg-white p-4 sm:p-6 rounded-xl border border-gray-300 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                      <Code className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Code className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900 text-lg">Full Stack Development Certification</p>
-                      <p className="text-blue-600 font-semibold">AlmaBetter Institute - MERN Stack</p>
+                      <p className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg">Full Stack Development Certification</p>
+                      <p className="text-blue-600 font-semibold text-xs sm:text-sm">AlmaBetter Institute - MERN Stack</p>
                     </div>
                   </div>
-                  <p className="text-gray-600 ml-15">Intensive training in modern web development technologies</p>
+                  <p className="text-gray-600 text-xs sm:text-sm ml-0 sm:ml-15">Intensive training in modern web development technologies</p>
                 </div>
                 
-                <div className="group bg-white p-6 rounded-xl border border-gray-300 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                <div className="group bg-white p-4 sm:p-6 rounded-xl border border-gray-300 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                      <GraduationCap className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900 text-lg">Bachelor of Science in Chemistry</p>
-                      <p className="text-blue-600 font-semibold flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
+                      <p className="font-bold text-gray-900 text-sm sm:text-base lg:text-lg">Bachelor of Science in Chemistry</p>
+                      <p className="text-blue-600 font-semibold flex items-center gap-2 text-xs sm:text-sm">
+                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                         Government College, Durgapur
                       </p>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 ml-15">CGPA: 7.6/10 - Graduated with distinction</p>
+                  <p className="text-xs sm:text-sm text-gray-600 ml-0 sm:ml-15">CGPA: 7.6/10 - Graduated with distinction</p>
                 </div>
               </div>
             </div>
             
             {/* Achievements Section */}
-            <div className="space-y-8">
-              <h4 className="text-2xl font-bold text-blue-600 mb-6 flex items-center gap-3">
+            <div className="space-y-6 sm:space-y-8">
+              <h4 className="text-xl sm:text-2xl font-bold text-blue-600 mb-4 sm:mb-6 flex items-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                   <Award className="w-4 h-4 text-white" />
                 </div>
                 Key Achievements
               </h4>
-              <div className="grid gap-4">
+              <div className="grid gap-3 sm:gap-4">
                 {achievements.map((achievement, index) => (
-                  <div key={index} className="group flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-300 hover:border-blue-500/50 hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                    <div className="p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl text-white group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div key={index} className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white rounded-xl border border-gray-300 hover:border-blue-500/50 hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                    <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl text-white group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
                       {achievement.icon}
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h5 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-1 gap-2">
+                        <h5 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 text-sm sm:text-base truncate">
                           {achievement.title}
                         </h5>
-                        <span className="text-blue-600 font-bold text-sm bg-blue-500/20 px-2 py-1 rounded-full">
+                        <span className="text-blue-600 font-bold text-xs sm:text-sm bg-blue-500/20 px-2 py-1 rounded-full whitespace-nowrap">
                           {achievement.value}
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm group-hover:text-gray-700 transition-colors duration-300">
+                      <p className="text-gray-600 text-xs sm:text-sm group-hover:text-gray-700 transition-colors duration-300">
                         {achievement.description}
                       </p>
                     </div>
