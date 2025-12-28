@@ -178,7 +178,7 @@ const Hero = () => {
                 </a>
 
                 <a
-                  href="https://drive.google.com/file/d/1kvmfMeFiURfCOZwEger3jDb0AtqTNQJ4/view?usp=sharing"
+                  href="https://res.cloudinary.com/dyiso4ohk/image/upload/v1766899151/BACKEND_ENGINEER_uxavna.pdf"
                   download
                   className="group flex items-center justify-center gap-2 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-gray-200/50 border border-gray-400 rounded-full text-gray-700 font-semibold hover:bg-gray-300/50 hover:border-gray-500 hover:text-gray-900 transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto cursor-pointer"
                 >
