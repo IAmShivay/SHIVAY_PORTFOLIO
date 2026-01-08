@@ -44,7 +44,46 @@ const Projects = () => {
         "Multi-authentication"
       ],
       stats: { users: "1000+", deals: "₹1Cr+" },
-      liveDemo: "#",
+      liveDemo: "https://vcrm.formiqstudio.com",
+      github: "#",
+      featured: true
+    },
+    {
+      title: "Shivan International CMS",
+      subtitle: "TypeScript NPM Package",
+      description: "Content management system for import export",
+      technologies: [
+        { name: "TypeScript", icon: "🔷", color: "from-blue-500 to-blue-600" },
+        { name: "NPM", icon: "📦", color: "from-blue-500 to-blue-600" },
+        { name: "JavaScript", icon: "🟨", color: "from-blue-500 to-blue-600" }
+      ],
+      features: [
+        "Unlimited Product",
+        "Subcategories,categories",
+        "Lightweight (2KB)",
+      ],
+      stats: { downloads: "500+", size: "2KB" },
+      npmLink: "https://www.npmjs.com/package/currency-formatter",
+      github: "#",
+      featured: true
+    },
+    {
+      title: "Loan Application",
+      subtitle: "Student Loan App",
+      description: "Student can apply for education loan (Dashboard for user ,admin ,Dsa)",
+      technologies: [
+        { name: "TypeScript", icon: "🔷", color: "from-blue-500 to-blue-600" },
+        { name: "NPM", icon: "📦", color: "from-blue-500 to-blue-600" },
+        { name: "JavaScript", icon: "🟨", color: "from-blue-500 to-blue-600" }
+      ],
+      features: [
+        "Analytics Dashboard",
+        "Loan Calculator",
+        "RealTime Chat",
+        // "500+ weekly downloads"
+      ],
+      stats: { downloads: "500+", size: "2KB" },
+      npmLink: "https://www.npmjs.com/package/currency-formatter",
       github: "#",
       featured: true
     },
