@@ -15,24 +15,9 @@ const Experience = () => {
 
   const experiences = [
     {
-      company: "Scraft Studio",
-      role: "Full Stack Web Developer",
-      duration: "Jan 2025 – Present",
-      location: "Gujarat, Ahmedabad",
-      type: "Current Position",
-      logo: "🚀",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "from-blue-500/10 to-blue-600/10",
-      achievements: [
-        { text: "Leading multiple projects from conception to completion", icon: <Target className="w-4 h-4" /> },
-        { text: "Implementing modern web technologies and best practices", icon: <Zap className="w-4 h-4" /> },
-        { text: "Collaborating with cross-functional teams for optimal results", icon: <Award className="w-4 h-4" /> }
-      ]
-    },
-    {
       company: "Durgapur Education Foundation",
       role: "Full Stack Web Developer",
-      duration: "Feb 2024 – Jan 2025",
+      duration: "Present",
       location: "Durgapur, West Bengal",
       type: "Full-time",
       logo: "🎓",
@@ -43,6 +28,37 @@ const Experience = () => {
         { text: "Successfully delivered more than 5 projects during tenure", icon: <Award className="w-4 h-4" /> },
         { text: "Consistently met objectives and deadlines while maintaining quality standards", icon: <Zap className="w-4 h-4" /> },
         { text: "Demonstrated strong leadership and project management capabilities", icon: <Target className="w-4 h-4" /> }
+      ]
+    },
+       {
+      company: "Maity innovation Pvt Ltd",
+      role: "Full Stack Web Developer",
+      duration: "Aug 2025 - Jan 2026",
+      location: "Durgapur, West Bengal",
+      type: "Full-time",
+      logo: "🎓",
+      color: "from-blue-500 to-blue-600",
+      bgColor: "from-blue-500/10 to-blue-600/10",
+      achievements: [
+        { text: "Collaborated With Team led and contributed to features", icon: <Target className="w-4 h-4" /> },
+        { text: "Coordinated with Team Lead for system design", icon: <Award className="w-4 h-4" /> },
+        { text: "Consistently met objectives and deadlines while maintaining quality standards", icon: <Zap className="w-4 h-4" /> },
+        { text: "Helped Juniors In errors and code Reviews", icon: <Target className="w-4 h-4" /> }
+      ]
+    },
+    {
+      company: "Scraft Studio",
+      role: "Full Stack Web Developer",
+      duration: "October 2024 - August 2025  – ",
+      location: "Gujarat, Ahmedabad",
+      type: "Full-time",
+      logo: "🚀",
+      color: "from-blue-500 to-blue-600",
+      bgColor: "from-blue-500/10 to-blue-600/10",
+      achievements: [
+        { text: "Leading multiple projects from conception to completion", icon: <Target className="w-4 h-4" /> },
+        { text: "Implementing modern web technologies and best practices", icon: <Zap className="w-4 h-4" /> },
+        { text: "Collaborating with cross-functional teams for optimal results", icon: <Award className="w-4 h-4" /> }
       ]
     },
     {

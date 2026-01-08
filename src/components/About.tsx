@@ -19,7 +19,7 @@ const About = () => {
       title: "Full Stack Development",
       description: "Expert in MERN stack with proven experience in building scalable applications",
       color: "from-blue-500 to-blue-600",
-      stats: "5+ Projects"
+      stats: "3+ Projects"
     },
     {
       icon: <Database className="w-6 h-6 sm:w-8 sm:h-8" />,
@@ -55,7 +55,7 @@ const About = () => {
       icon: <Target className="w-6 h-6" />,
       title: "Project Delivery",
       description: "Delivered 2 high-priority projects ahead of schedule",
-      value: "2 Projects"
+      value: "3 Projects"
     },
     {
       icon: <Zap className="w-6 h-6" />,
@@ -67,7 +67,7 @@ const About = () => {
       icon: <Rocket className="w-6 h-6" />,
       title: "NPM Package",
       description: "Created package with 500+ weekly downloads",
-      value: "500+ DL/week"
+      value: "100+ DL/week"
     }
   ];
 
@@ -98,7 +98,7 @@ const About = () => {
               About Me
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 pb-4 sm:mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2">
             Crafting Digital Excellence
           </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">

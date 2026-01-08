@@ -27,7 +27,7 @@ const Certifications = () => {
   const certifications = [
     {
       title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
+      issuer: "TuteDude",
       date: "2024",
       status: "Active",
       level: "Professional",
@@ -37,33 +37,33 @@ const Certifications = () => {
       credentialId: "AWS-SAA-2024-001",
       verifyLink: "#"
     },
-    {
-      title: "Google Cloud Professional Developer",
-      issuer: "Google Cloud",
-      date: "2024",
-      status: "Active",
-      level: "Professional",
-      icon: "☁️",
-      description: "Advanced cloud development and deployment strategies",
-      skills: ["GCP Services", "Kubernetes", "DevOps", "Microservices"],
-      credentialId: "GCP-PCD-2024-002",
-      verifyLink: "#"
-    },
-    {
-      title: "Meta Frontend Developer Certificate",
-      issuer: "Meta (Facebook)",
-      date: "2023",
-      status: "Active",
-      level: "Professional",
-      icon: "⚛️",
-      description: "Comprehensive frontend development with React ecosystem",
-      skills: ["React.js", "JavaScript", "HTML/CSS", "UI/UX"],
-      credentialId: "META-FE-2023-003",
-      verifyLink: "#"
-    },
+    // {
+    //   title: "Google Cloud Professional Developer",
+    //   issuer: "Google Cloud",
+    //   date: "2024",
+    //   status: "Active",
+    //   level: "Professional",
+    //   icon: "☁️",
+    //   description: "Advanced cloud development and deployment strategies",
+    //   skills: ["GCP Services", "Kubernetes", "DevOps", "Microservices"],
+    //   credentialId: "GCP-PCD-2024-002",
+    //   verifyLink: "#"
+    // },
+    // {
+    //   title: "Meta Frontend Developer Certificate",
+    //   issuer: "Meta (Facebook)",
+    //   date: "2023",
+    //   status: "Active",
+    //   level: "Professional",
+    //   icon: "⚛️",
+    //   description: "Comprehensive frontend development with React ecosystem",
+    //   skills: ["React.js", "JavaScript", "HTML/CSS", "UI/UX"],
+    //   credentialId: "META-FE-2023-003",
+    //   verifyLink: "#"
+    // },
     {
       title: "MongoDB Certified Developer",
-      issuer: "MongoDB University",
+      issuer: "Almabetter",
       date: "2023",
       status: "Active",
       level: "Associate",
@@ -75,7 +75,7 @@ const Certifications = () => {
     },
     {
       title: "Docker Certified Associate",
-      issuer: "Docker Inc.",
+      issuer: "TuteDude",
       date: "2023",
       status: "Active",
       level: "Associate",
@@ -85,18 +85,18 @@ const Certifications = () => {
       credentialId: "DCA-2023-005",
       verifyLink: "#"
     },
-    {
-      title: "Certified Kubernetes Administrator",
-      issuer: "Cloud Native Computing Foundation",
-      date: "2024",
-      status: "Active",
-      level: "Professional",
-      icon: "⚙️",
-      description: "Kubernetes cluster administration and management",
-      skills: ["Kubernetes", "Container Orchestration", "DevOps", "Cloud Native"],
-      credentialId: "CKA-2024-006",
-      verifyLink: "#"
-    }
+    // {
+    //   title: "Certified Kubernetes Administrator",
+    //   issuer: "Cloud Native Computing Foundation",
+    //   date: "2024",
+    //   status: "Active",
+    //   level: "Professional",
+    //   icon: "⚙️",
+    //   description: "Kubernetes cluster administration and management",
+    //   skills: ["Kubernetes", "Container Orchestration", "DevOps", "Cloud Native"],
+    //   credentialId: "CKA-2024-006",
+    //   verifyLink: "#"
+    // }
   ];
 
   const achievements = [
@@ -277,7 +277,7 @@ const Certifications = () => {
           <div className="absolute top-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-full blur-xl" aria-hidden="true"></div>
           <div className="absolute bottom-4 left-4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-full blur-lg" aria-hidden="true"></div>
           
-          <div className="relative z-10">
+          {/* <div className="relative z-10">
             <div className="text-center mb-6 sm:mb-8 lg:mb-12">
               <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-2 sm:mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Recognition & Achievements
@@ -309,7 +309,7 @@ const Certifications = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </aside>
 
         {/* Stats Summary */}
