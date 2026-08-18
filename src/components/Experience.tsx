@@ -23,32 +23,29 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-14 lg:py-20 bg-gray-50/60 border-t border-gray-100">
+    <section id="experience" className="py-12 sm:py-14 lg:py-20 bg-gray-50/60 border-t border-gray-100">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Experience</p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Work History</h2>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Work History</h2>
 
-        {/* Table-like layout — distinct from card grids */}
         <div className="space-y-0 divide-y divide-gray-200 bg-white rounded-xl border border-gray-100 overflow-hidden">
           {experiences.map((exp, index) => (
-            <div key={index} className="grid lg:grid-cols-[280px,1fr] gap-4 lg:gap-8 p-5 sm:p-6 hover:bg-gray-50/50 transition-colors">
-              {/* Left — metadata */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-[15px] font-semibold text-gray-900">{exp.role}</h3>
+            <div key={index} className="grid lg:grid-cols-[260px,1fr] gap-2 sm:gap-4 lg:gap-8 p-4 sm:p-5 lg:p-6 hover:bg-gray-50/50 transition-colors">
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <h3 className="text-sm sm:text-[15px] font-semibold text-gray-900">{exp.role}</h3>
                   {exp.current && (
                     <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-medium rounded border border-emerald-200">
                       <span className="w-1 h-1 bg-emerald-500 rounded-full" /> Now
                     </span>
                   )}
                 </div>
-                <p className="text-[13px] text-gray-500">{exp.company}</p>
-                <p className="text-xs text-gray-400 mt-1">{exp.duration} &middot; {exp.location}</p>
+                <p className="text-xs sm:text-[13px] text-gray-500">{exp.company}</p>
+                <p className="text-[11px] sm:text-xs text-gray-400 mt-0.5">{exp.duration} &middot; {exp.location}</p>
               </div>
-              {/* Right — achievements */}
-              <ul className="space-y-1">
+              <ul className="space-y-1 sm:space-y-1.5 mt-2 lg:mt-0">
                 {exp.achievements.map((a, idx) => (
-                  <li key={idx} className="text-[13px] text-gray-600 leading-relaxed pl-3.5 relative before:content-[''] before:absolute before:left-0 before:top-[8px] before:w-1.5 before:h-1.5 before:bg-gray-300 before:rounded-full">
+                  <li key={idx} className="text-xs sm:text-[13px] text-gray-600 leading-relaxed pl-3 sm:pl-3.5 relative before:content-[''] before:absolute before:left-0 before:top-[7px] sm:before:top-[8px] before:w-1.5 before:h-1.5 before:bg-gray-300 before:rounded-full">
                     {a}
                   </li>
                 ))}
