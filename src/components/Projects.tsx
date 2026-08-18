@@ -19,8 +19,8 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-14 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/60 border-t border-gray-100">
-      <div className="w-full max-w-7xl mx-auto">
+    <section id="projects" className="py-14 lg:py-20 bg-gray-50/60 border-t border-gray-100">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Projects</p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Selected Work</h2>
 

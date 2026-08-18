@@ -1,7 +1,7 @@
 const About = () => {
   return (
-    <section id="about" className="py-14 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
-      <div className="w-full max-w-7xl mx-auto">
+    <section id="about" className="py-14 lg:py-20 border-t border-gray-100">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Metrics strip — full width, no cards, just numbers */}
         <div className="flex flex-wrap justify-between gap-y-6 mb-12 lg:mb-16">
           {[

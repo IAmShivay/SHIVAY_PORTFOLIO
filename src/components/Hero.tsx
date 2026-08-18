@@ -5,10 +5,10 @@ const Hero = () => {
   const heatmap = Array.from({ length: 100 }, () => Math.random());
 
   return (
-    <section id="home" className="relative px-4 sm:px-6 lg:px-8 pt-24 pb-10 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
+    <section id="home" className="relative pt-24 pb-10 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
 
-      <div className="relative w-full max-w-7xl mx-auto">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1fr,380px] xl:grid-cols-[1fr,420px] items-center gap-10 lg:gap-14">
 
           {/* Left — text */}

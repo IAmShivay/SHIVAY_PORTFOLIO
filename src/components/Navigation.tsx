@@ -15,7 +15,6 @@ const Navigation = () => {
         setIsScrolled(window.scrollY > 50);
         const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
         const scrollPosition = window.scrollY + 200;
-        // Walk backwards — last section whose top we've passed wins
         let current = 'home';
         for (const section of sections) {
           const element = document.getElementById(section);
@@ -47,9 +46,14 @@ const Navigation = () => {
     }`}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          {/* Logo */}
-          <a href="#home" onClick={(e) => scrollToSection('home', e)} className="cursor-pointer">
-            <span className="text-sm lg:text-[15px] font-bold text-gray-900 tracking-[0.12em] uppercase">Shiv Sharma</span>
+          {/* Logo with frame */}
+          <a href="#home" onClick={(e) => scrollToSection('home', e)} className="cursor-pointer inline-flex items-center gap-2.5">
+            <span className="inline-flex items-center justify-center w-8 h-8 lg:w-9 lg:h-9 rounded-lg bg-gray-900 text-white text-xs lg:text-sm font-bold tracking-wide">
+              SS
+            </span>
+            <span className="text-sm lg:text-[15px] font-bold text-gray-900 tracking-[0.08em] uppercase hidden sm:inline">
+              Shiv Sharma
+            </span>
           </a>
 
           {/* Desktop nav */}

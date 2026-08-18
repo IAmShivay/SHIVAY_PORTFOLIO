@@ -9,8 +9,8 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-14 lg:py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-100">
-      <div className="w-full max-w-7xl mx-auto">
+    <section id="skills" className="py-14 lg:py-20 border-t border-gray-100">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-8">
           <div>
             <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Skills</p>
