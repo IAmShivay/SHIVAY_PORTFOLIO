@@ -1,273 +1,60 @@
-import { Calendar, MapPin, Building, ChevronRight, Zap, Target, Award } from 'lucide-react';
-import { useState, useEffect } from 'react';
-
 const Experience = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const experiences = [
-    {
-      company: "Durgapur Education Foundation",
-      role: "Full Stack Web Developer",
-      duration: "Present",
-      location: "Durgapur, West Bengal",
-      type: "Full-time",
-      logo: "🎓",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "from-blue-500/10 to-blue-600/10",
-      achievements: [
-        { text: "Independently led 3+ projects from conception to completion", icon: <Target className="w-4 h-4" /> },
-        { text: "Successfully delivered more than 5 projects during tenure", icon: <Award className="w-4 h-4" /> },
-        { text: "Consistently met objectives and deadlines while maintaining quality standards", icon: <Zap className="w-4 h-4" /> },
-        { text: "Demonstrated strong leadership and project management capabilities", icon: <Target className="w-4 h-4" /> }
-      ]
-    },
-       {
-      company: "Maity innovation Pvt Ltd",
-      role: "Full Stack Web Developer",
-      duration: "Aug 2025 - Jan 2026",
-      location: "Durgapur, West Bengal",
-      type: "Full-time",
-      logo: "🎓",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "from-blue-500/10 to-blue-600/10",
-      achievements: [
-        { text: "Collaborated With Team led and contributed to features", icon: <Target className="w-4 h-4" /> },
-        { text: "Coordinated with Team Lead for system design", icon: <Award className="w-4 h-4" /> },
-        { text: "Consistently met objectives and deadlines while maintaining quality standards", icon: <Zap className="w-4 h-4" /> },
-        { text: "Helped Juniors In errors and code Reviews", icon: <Target className="w-4 h-4" /> }
-      ]
-    },
-    {
-      company: "Scraft Studio",
-      role: "Full Stack Web Developer",
-      duration: "October 2024 - August 2025  – ",
-      location: "Gujarat, Ahmedabad",
-      type: "Full-time",
-      logo: "🚀",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "from-blue-500/10 to-blue-600/10",
-      achievements: [
-        { text: "Leading multiple projects from conception to completion", icon: <Target className="w-4 h-4" /> },
-        { text: "Implementing modern web technologies and best practices", icon: <Zap className="w-4 h-4" /> },
-        { text: "Collaborating with cross-functional teams for optimal results", icon: <Award className="w-4 h-4" /> }
-      ]
-    },
-    {
-      company: "Rekonsile",
-      role: "Software Engineer Intern",
-      duration: "March 2023 – Aug 2023",
-      location: "Remote",
-      type: "Internship",
-      logo: "⚡",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "from-blue-500/10 to-blue-600/10",
-      achievements: [
-        { text: "Engineered RESTful APIs for e-commerce platform integration, improving system interoperability by 40%", icon: <Zap className="w-4 h-4" /> },
-        { text: "Optimized MongoDB queries and implemented strategic indexing, achieving 30% improvement in database performance", icon: <Target className="w-4 h-4" /> },
-        { text: "Collaborated with senior developers on complex technical challenges", icon: <Award className="w-4 h-4" /> }
-      ]
-    }
+    { company: "GoSuperEdtech Pvt. Ltd.", role: "SDE-1 (Full Stack)", duration: "Feb 2026 - Present", location: "Bangalore", current: true, achievements: [
+      "Async image processing pipeline (NestJS, BullMQ, Sharp) — 40% faster media processing",
+      "Real-time upload tracking via WebSockets with Redis state — 500+ concurrent connections",
+      "Stateless horizontal scaling across K8s pods with shared GCS storage — zero data loss",
+      "CI/CD with GitHub Actions, Docker builds — deploy cycle reduced from 2hrs to 15min",
+    ]},
+    { company: "Maity Innovations Pvt. Ltd.", role: "Backend Engineer", duration: "Sep 2025 - Jan 2026", location: "Durgapur", achievements: [
+      "Node.js/Express backend for 1,000+ concurrent users — MongoDB REST APIs, Docker scaling",
+      "35% query speedup via indexing, aggregation optimization, Redis caching — 40+ Swagger docs",
+      "RBAC with JWT + bcrypt — rate limiting, structured logging middleware",
+    ]},
+    { company: "Scraft Studio", role: "Junior Software Engineer", duration: "Oct 2024 - Aug 2025", location: "Ahmedabad", achievements: [
+      "MERN e-commerce platform — 50K+ MAU, Checkbook payout & Visa gateway integration",
+      "30% page load improvement — code splitting, lazy loading, GCP Cloud CDN deployment",
+      "Admin panel — inventory management, order tracking, webhook payment reconciliation",
+    ]},
+    { company: "Rekonsile", role: "Software Engineer Intern", duration: "Feb 2024 - May 2024", location: "Bangalore", achievements: [
+      "RESTful APIs for Flipkart/Amazon/Myntra refund reconciliation — 50% latency reduction",
+      "Automated daily reports with cron jobs — internal refund tracking dashboard",
+    ]}
   ];
 
   return (
-    <section id="experience" className="py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-dots opacity-5"></div>
-      <div
-        className="absolute w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-full blur-3xl animate-float"
-        style={{
-          left: `${mousePosition.x * 0.02}px`,
-          top: `${mousePosition.y * 0.02}px`,
-        }}
-      ></div>
-      <div
-        className="absolute w-48 sm:w-60 lg:w-72 h-48 sm:h-60 lg:h-72 bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-full blur-3xl animate-float"
-        style={{
-          right: `${mousePosition.x * -0.01}px`,
-          bottom: `${mousePosition.y * -0.01}px`,
-          animationDelay: '2s'
-        }}
-      ></div>
+    <section id="experience" className="py-14 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/60 border-t border-gray-100">
+      <div className="w-full max-w-7xl mx-auto">
+        <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Experience</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Work History</h2>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-12 sm:mb-16 lg:mb-24">
-          <div className="inline-block mb-4 sm:mb-6">
-            <span className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-full text-blue-600 font-semibold border border-blue-500/30 backdrop-blur-sm text-xs sm:text-sm lg:text-base">
-              Career Journey
-            </span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient leading-tight px-2">
-            Professional Experience
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
-            Building exceptional web solutions across different industries and scales with proven results
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* Enhanced Timeline Line - Vertical on mobile, Horizontal on desktop */}
-          <div className="hidden lg:block absolute left-0 right-0 top-12 h-1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 rounded-full shadow-lg"></div>
-          <div className="lg:hidden absolute left-5 sm:left-8 top-0 bottom-0 w-0.5 sm:w-1 bg-gradient-to-b from-blue-500 via-blue-600 to-blue-500 rounded-full shadow-lg"></div>
-
-          {/* Mobile/Tablet Layout - 2 columns grid */}
-          <div className="lg:hidden grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            {experiences.map((exp, index) => (
-              <div key={index} className="group relative">
-                <div>
-                  <div className="bg-white backdrop-blur-sm p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl border border-gray-300 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] card-3d overflow-hidden group-hover:shadow-2xl shadow-lg h-full">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${exp.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-
-                    <div className="relative z-10">
-                      <div className="flex flex-col items-start gap-2 sm:gap-3 mb-3 sm:mb-4">
-                        <div className={`text-xl sm:text-2xl md:text-3xl p-2 sm:p-3 md:p-4 bg-gradient-to-r ${exp.color} rounded-lg sm:rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                          {exp.logo}
-                        </div>
-                        <div className="w-full">
-                          <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-                            <span className={`px-2 py-0.5 sm:px-2 sm:py-1 text-[10px] sm:text-xs font-bold rounded-full ${
-                              exp.type === 'Current Position' ? 'bg-blue-500/20 text-blue-600 border border-blue-500/30' :
-                              exp.type === 'Full-time' ? 'bg-blue-500/20 text-blue-600 border border-blue-500/30' :
-                              'bg-blue-500/20 text-blue-600 border border-blue-500/30'
-                            }`}>
-                              {exp.type}
-                            </span>
-                          </div>
-                          <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-900 mb-1 sm:mb-2 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
-                            {exp.role}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 sm:gap-2 text-blue-600 mb-2 sm:mb-3">
-                        <Building size={12} className="flex-shrink-0 sm:w-4 sm:h-4" />
-                        <span className="font-bold text-[10px] sm:text-xs md:text-sm truncate">{exp.company}</span>
-                      </div>
-
-                      <div className="flex flex-col gap-1 sm:gap-1.5 text-gray-600 mb-3 sm:mb-4 md:mb-6">
-                        <div className="flex items-center gap-1 sm:gap-1.5">
-                          <Calendar size={10} className="flex-shrink-0 sm:w-3 sm:h-3" />
-                          <span className="font-medium text-[9px] sm:text-[10px] md:text-xs">{exp.duration}</span>
-                        </div>
-                        <div className="flex items-center gap-1 sm:gap-1.5">
-                          <MapPin size={10} className="flex-shrink-0 sm:w-3 sm:h-3" />
-                          <span className="font-medium text-[9px] sm:text-[10px] md:text-xs">{exp.location}</span>
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
-                        {exp.achievements.map((achievement, idx) => (
-                          <div key={idx} className="group/item flex items-start gap-1.5 sm:gap-2 md:gap-3 p-2 sm:p-2.5 md:p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50/50 transition-all duration-300">
-                            <div className={`p-1 sm:p-1.5 md:p-2 bg-gradient-to-r ${exp.color} rounded-md text-white group-hover/item:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                              <div className="w-3 h-3 sm:w-4 sm:h-4">
-                                {achievement.icon}
-                              </div>
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <span className="text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 leading-relaxed text-[9px] sm:text-[10px] md:text-xs block">
-                                {achievement.text}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
-                  </div>
+        {/* Table-like layout — distinct from card grids */}
+        <div className="space-y-0 divide-y divide-gray-200 bg-white rounded-xl border border-gray-100 overflow-hidden">
+          {experiences.map((exp, index) => (
+            <div key={index} className="grid lg:grid-cols-[280px,1fr] gap-4 lg:gap-8 p-5 sm:p-6 hover:bg-gray-50/50 transition-colors">
+              {/* Left — metadata */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-[15px] font-semibold text-gray-900">{exp.role}</h3>
+                  {exp.current && (
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-medium rounded border border-emerald-200">
+                      <span className="w-1 h-1 bg-emerald-500 rounded-full" /> Now
+                    </span>
+                  )}
                 </div>
+                <p className="text-[13px] text-gray-500">{exp.company}</p>
+                <p className="text-xs text-gray-400 mt-1">{exp.duration} &middot; {exp.location}</p>
               </div>
-            ))}
-          </div>
-
-          {/* Desktop Layout - Side by Side with Timeline */}
-          <div className="hidden lg:block">
-            <div className="grid lg:grid-cols-2 gap-8 xl:gap-12">
-              {experiences.map((exp, index) => (
-                <div key={index} className="group relative pt-16">
-                  {/* Timeline Dot - Positioned at top center */}
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 top-9 w-8 h-8 bg-gradient-to-r ${exp.color} rounded-full border-4 border-white z-20 shadow-xl group-hover:scale-125 transition-transform duration-300`}>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-full animate-pulse"></div>
-                  </div>
-
-                  {/* Vertical connecting line from dot to card */}
-                  <div className={`absolute left-1/2 transform -translate-x-0.5 top-16 w-1 h-4 bg-gradient-to-b ${exp.color} z-10`}></div>
-
-                  <div>
-                    <div className="bg-white backdrop-blur-sm p-8 rounded-3xl border border-gray-300 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] card-3d overflow-hidden group-hover:shadow-2xl shadow-lg h-full">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${exp.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-
-                      <div className="relative z-10">
-                        <div className="flex items-start gap-5 mb-6">
-                          <div className={`text-4xl p-5 bg-gradient-to-r ${exp.color} rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                            {exp.logo}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-3">
-                              <span className={`px-3 py-1.5 text-xs font-bold rounded-full ${
-                                exp.type === 'Current Position' ? 'bg-blue-500/20 text-blue-600 border border-blue-500/30' :
-                                exp.type === 'Full-time' ? 'bg-blue-500/20 text-blue-600 border border-blue-500/30' :
-                                'bg-blue-500/20 text-blue-600 border border-blue-500/30'
-                              }`}>
-                                {exp.type}
-                              </span>
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
-                              {exp.role}
-                            </h3>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-2.5 text-blue-600 mb-4">
-                          <Building size={18} className="flex-shrink-0" />
-                          <span className="font-bold text-lg">{exp.company}</span>
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
-                          <div className="flex items-center gap-2.5">
-                            <Calendar size={16} className="flex-shrink-0" />
-                            <span className="font-medium text-sm">{exp.duration}</span>
-                          </div>
-                          <div className="flex items-center gap-2.5">
-                            <MapPin size={16} className="flex-shrink-0" />
-                            <span className="font-medium text-sm">{exp.location}</span>
-                          </div>
-                        </div>
-
-                        <div className="space-y-4">
-                          {exp.achievements.map((achievement, idx) => (
-                            <div key={idx} className="group/item flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-blue-400 hover:bg-blue-50/50 transition-all duration-300">
-                              <div className={`p-2.5 bg-gradient-to-r ${exp.color} rounded-lg text-white group-hover/item:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                                <div className="w-5 h-5 flex items-center justify-center">
-                                  {achievement.icon}
-                                </div>
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <span className="text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 leading-relaxed text-sm block">
-                                  {achievement.text}
-                                </span>
-                              </div>
-                              <ChevronRight className="w-5 h-5 text-gray-400 group-hover/item:text-blue-600 group-hover/item:translate-x-1 transition-all duration-300 flex-shrink-0 mt-0.5" />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {/* Right — achievements */}
+              <ul className="space-y-1">
+                {exp.achievements.map((a, idx) => (
+                  <li key={idx} className="text-[13px] text-gray-600 leading-relaxed pl-3.5 relative before:content-[''] before:absolute before:left-0 before:top-[8px] before:w-1.5 before:h-1.5 before:bg-gray-300 before:rounded-full">
+                    {a}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
