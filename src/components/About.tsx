@@ -2,8 +2,8 @@ const About = () => {
   return (
     <section id="about" className="py-14 lg:py-20 border-t border-gray-100">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Metrics strip — full width, no cards, just numbers */}
-        <div className="flex flex-wrap justify-between gap-y-6 mb-12 lg:mb-16">
+        {/* Metrics strip */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12 lg:mb-16">
           {[
             { value: "2.5+", label: "Years of Experience" },
             { value: "50K+", label: "Users Served" },
@@ -11,9 +11,9 @@ const About = () => {
             { value: "8x", label: "Deploy Speedup" },
             { value: "500+", label: "Concurrent Connections" },
           ].map((m, i) => (
-            <div key={i} className="text-center px-2">
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">{m.value}</p>
-              <p className="text-xs text-gray-400 mt-1">{m.label}</p>
+            <div key={i} className="text-center">
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight">{m.value}</p>
+              <p className="text-[11px] sm:text-xs text-gray-400 mt-1">{m.label}</p>
             </div>
           ))}
         </div>

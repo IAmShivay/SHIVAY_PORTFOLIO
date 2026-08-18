@@ -42,7 +42,7 @@ const Contact = () => {
           {/* Left — contact details + form */}
           <div className="space-y-5 flex flex-col">
             {/* Contact info */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               <a href="mailto:shivaysharmachemistry@gmail.com" className="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors group">
                 <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-gray-100 transition-colors flex-shrink-0">
                   <Mail size={16} className="text-gray-500" />

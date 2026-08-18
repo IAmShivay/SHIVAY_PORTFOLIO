@@ -30,6 +30,19 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 768) setIsOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const navItems = ['Home', 'About', 'Experience', 'Skills', 'Projects', 'Contact'];
 
   const scrollToSection = useCallback((section: string, e: React.MouseEvent) => {
@@ -39,57 +52,26 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-      isScrolled
-        ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.05)]'
-        : 'bg-white'
-    }`}>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          {/* Logo with frame */}
-          <a href="#home" onClick={(e) => scrollToSection('home', e)} className="cursor-pointer inline-flex items-center gap-2.5">
-            <span className="inline-flex items-center justify-center w-8 h-8 lg:w-9 lg:h-9 rounded-lg bg-gray-900 text-white text-xs lg:text-sm font-bold tracking-wide">
-              SS
-            </span>
-            <span className="text-sm lg:text-[15px] font-bold text-gray-900 tracking-[0.08em] uppercase hidden sm:inline">
-              Shiv Sharma
-            </span>
-          </a>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.05)]'
+          : 'bg-white'
+      }`}>
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 lg:h-[72px]">
+            {/* Logo */}
+            <a href="#home" onClick={(e) => scrollToSection('home', e)} className="cursor-pointer inline-flex items-center gap-2.5 relative z-50">
+              <span className="inline-flex items-center justify-center w-8 h-8 lg:w-9 lg:h-9 rounded-lg bg-gray-900 text-white text-xs lg:text-sm font-bold tracking-wide">
+                SS
+              </span>
+              <span className="text-sm lg:text-[15px] font-bold text-gray-900 tracking-[0.08em] uppercase hidden sm:inline">
+                Shiv Sharma
+              </span>
+            </a>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center bg-gray-100/80 rounded-full p-1 lg:p-1.5">
-            {navItems.map((item) => {
-              const section = item.toLowerCase();
-              const isActive = activeSection === section;
-              return (
-                <button
-                  key={item}
-                  onClick={(e) => scrollToSection(section, e)}
-                  className={`px-4 py-2 lg:px-5 lg:py-2 text-sm rounded-full transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-white text-gray-900 font-medium shadow-sm ring-1 ring-black/[0.04]'
-                      : 'text-gray-500 hover:text-gray-800'
-                  }`}
-                >
-                  {item}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 -mr-2 text-gray-500 hover:text-gray-900 cursor-pointer"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-
-        {/* Mobile dropdown */}
-        {isOpen && (
-          <div className="md:hidden pb-4 pt-1 border-t border-gray-100">
-            <div className="grid grid-cols-2 gap-1 pt-2">
+            {/* Desktop nav */}
+            <div className="hidden md:flex items-center bg-gray-100/80 rounded-full p-1 lg:p-1.5">
               {navItems.map((item) => {
                 const section = item.toLowerCase();
                 const isActive = activeSection === section;
@@ -97,9 +79,45 @@ const Navigation = () => {
                   <button
                     key={item}
                     onClick={(e) => scrollToSection(section, e)}
-                    className={`text-left px-4 py-3 text-sm rounded-lg cursor-pointer transition-colors ${
+                    className={`px-4 py-2 lg:px-5 lg:py-2 text-sm rounded-full transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'text-gray-900 font-medium bg-gray-50'
+                        ? 'bg-white text-gray-900 font-medium shadow-sm ring-1 ring-black/[0.04]'
+                        : 'text-gray-500 hover:text-gray-800'
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 -mr-2 text-gray-500 hover:text-gray-900 cursor-pointer relative z-50"
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile fullscreen overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div className="absolute inset-0 bg-white" />
+          <div className="relative flex flex-col justify-center items-center h-full px-6">
+            <div className="space-y-1 w-full max-w-xs">
+              {navItems.map((item) => {
+                const section = item.toLowerCase();
+                const isActive = activeSection === section;
+                return (
+                  <button
+                    key={item}
+                    onClick={(e) => scrollToSection(section, e)}
+                    className={`block w-full text-left px-5 py-3.5 text-lg rounded-xl cursor-pointer transition-colors ${
+                      isActive
+                        ? 'text-gray-900 font-semibold bg-gray-50'
                         : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                   >
@@ -109,9 +127,9 @@ const Navigation = () => {
               })}
             </div>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      )}
+    </>
   );
 };
 
