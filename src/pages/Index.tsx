@@ -8,7 +8,7 @@ import Navigation from '../components/Navigation';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#111] text-gray-900 dark:text-gray-100 overflow-x-hidden transition-colors duration-300">
       <Navigation />
       <Hero />
       <About />
