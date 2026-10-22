@@ -1,0 +1,24 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "dependabot/npm_and_yarn/npm_and_yarn-40bbc56d90",
+    "feat/dark-mode-design-improvements",
+    "main",
+    "new-hero",
+    "origin"
+  ],
+  "parent": {
+    "dependabot/npm_and_yarn/npm_and_yarn-40bbc56d90": "main",
+    "feat/dark-mode-design-improvements": "main",
+    "main": null,
+    "new-hero": "main",
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "dependabot/npm_and_yarn/npm_and_yarn-40bbc56d90",
+    "feat/dark-mode-design-improvements",
+    "new-hero",
+    "origin"
+  ]
+}
