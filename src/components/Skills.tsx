@@ -1,0 +1,36 @@
+const Skills = () => {
+  const categories = [
+    { title: "Languages", skills: ["JavaScript (ES6+)", "TypeScript", "Python", "Bash/Shell", "SQL"] },
+    { title: "Frontend", skills: ["React.js", "Next.js", "Redux", "Tailwind CSS", "HTML5/CSS3"] },
+    { title: "Backend", skills: ["Node.js", "NestJS", "Express.js", "REST APIs", "Microservices", "WebSockets"] },
+    { title: "Databases", skills: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "TypeORM", "Drizzle", "Mongoose"] },
+    { title: "Cloud & DevOps", skills: ["GCP", "Docker", "Kubernetes", "Nginx", "CI/CD", "GitHub Actions"] },
+    { title: "Tools", skills: ["BullMQ", "Socket.io", "Kafka", "RabbitMQ", "Jest", "Jira", "Postman"] },
+  ];
+
+  return (
+    <section id="skills" className="py-12 sm:py-14 lg:py-20 border-t border-gray-100 dark:border-gray-800">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">Skills</p>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8">Technical Stack</h2>
+
+        <div className="space-y-4 sm:space-y-6">
+          {categories.map((cat, i) => (
+            <div key={i} className="flex flex-col sm:flex-row sm:items-start gap-1.5 sm:gap-6">
+              <p className="text-[11px] sm:text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest sm:w-28 lg:w-32 sm:text-right flex-shrink-0 sm:pt-2">{cat.title}</p>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 flex-1">
+                {cat.skills.map((skill, j) => (
+                  <span key={j} className="px-2.5 py-1.5 bg-gray-50 dark:bg-white/[0.03] text-xs sm:text-[13px] text-gray-700 dark:text-gray-300 rounded-lg border border-gray-100 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Skills;
