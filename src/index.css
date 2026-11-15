@@ -91,12 +91,12 @@ section {
 }
 
 ::selection {
-  background: #dbeafe;
-  color: #1e3a5f;
+  background: #111;
+  color: #fff;
 }
 .dark ::selection {
-  background: #1e3a5f;
-  color: #dbeafe;
+  background: #fff;
+  color: #111;
 }
 
 .dot-grid {
@@ -122,6 +122,265 @@ section {
 }
 .dark .card-lift:hover {
   box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Motion system ---------- */
+
+/* Lenis owns scrolling; native smooth-scroll would fight it. */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+/* Line masks from SplitText: room for descenders without shifting layout */
+[data-split] > *, [data-hero-name] > * {
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* ---------- Navigation: full bar → floating pill ---------- */
+.nav-inner {
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  max-width: 80rem;
+  height: 64px;
+  margin-top: 0;
+  padding: 0 1rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: #fff;
+  transition: max-width 0.7s var(--ease), height 0.7s var(--ease), margin-top 0.7s var(--ease),
+    padding 0.7s var(--ease), border-radius 0.7s var(--ease), background-color 0.4s, border-color 0.4s, box-shadow 0.5s;
+}
+.dark .nav-inner { background: #111; }
+@media (min-width: 640px) { .nav-inner { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { .nav-inner { height: 72px; padding: 0 2rem; } }
+
+.nav-shell[data-compact='true'] .nav-inner {
+  max-width: min(calc(100% - 20px), 780px);
+  height: 56px;
+  margin-top: 10px;
+  padding: 0 6px 0 8px;
+  border-radius: 999px;
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, 0.22);
+}
+.dark .nav-shell[data-compact='true'] .nav-inner {
+  border-color: rgba(255, 255, 255, 0.09);
+  background: rgba(22, 22, 22, 0.94);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, 0.7);
+}
+.nav-shell[data-compact='true'] .nav-links { background: transparent; }
+/* Menu open: the bar keeps its exact geometry (no layout jump), it just sheds its surface. */
+.nav-shell[data-open='true'] .nav-inner,
+.dark .nav-shell[data-open='true'] .nav-inner { background: transparent; border-color: transparent; box-shadow: none; }
+.nav-name, .nav-crumb {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s;
+}
+.nav-name { max-width: 12rem; display: none; }
+@media (min-width: 640px) { .nav-name { display: inline-block; } }
+@media (min-width: 768px) { .nav-crumb { display: none; } }
+.nav-shell[data-compact='true'] .nav-name { max-width: 0; opacity: 0; }
+.nav-crumb { max-width: 0; opacity: 0; }
+.nav-shell[data-compact='true'] .nav-crumb { max-width: 10rem; opacity: 1; }
+
+/* Wordmark: Shiv Sharma, with a square cursor for the i's dot */
+.wordmark {
+  --wm-fg: #111;
+  --wm-muted: #6b7280;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.24em;
+  white-space: nowrap;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--wm-fg);
+}
+.dark .wordmark { --wm-fg: #fff; --wm-muted: #9ca3af; }
+/* Each word is a mask the letters slide through; padding leaves room for descenders. */
+.wm-word { display: inline-flex; overflow: hidden; padding: 0.12em 0.02em 0.14em; margin: -0.12em -0.02em -0.14em; }
+.wm-first { font-weight: 700; }
+.wm-last { font-weight: 400; color: var(--wm-muted); transition: color 0.4s; }
+a:hover .wordmark .wm-last { color: var(--wm-fg); }
+.wm-tittle {
+  position: absolute;
+  left: 50%;
+  top: 0.02em;
+  width: 0.19em;
+  height: 0.19em;
+  margin-left: -0.095em;
+  background: var(--wm-fg);
+}
+.wm-tail {
+  display: inline-flex;
+  max-width: 6em;
+  transition: max-width 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.35s;
+}
+/* Phones and the floating pill: just "Shiv" */
+@media (max-width: 767px) { .wordmark:not(.wm-full) .wm-tail { max-width: 0; opacity: 0; overflow: hidden; } }
+.nav-shell[data-compact='true'] .wordmark .wm-tail { max-width: 0; opacity: 0; overflow: hidden; }
+
+/* Preloader always sits on near-black, in either theme */
+.preloader-mark, .dark .preloader-mark { --wm-fg: #fff; --wm-muted: rgba(255, 255, 255, 0.45); }
+
+/* Link labels roll up to a copy of themselves on hover */
+.roll { display: inline-grid; overflow: hidden; vertical-align: top; line-height: 1.3; }
+.roll > span, .roll::after { grid-area: 1 / 1; transition: transform 0.55s cubic-bezier(0.19, 1, 0.22, 1); }
+.roll::after { content: attr(data-text); transform: translateY(105%); }
+.roll-link:hover .roll > span { transform: translateY(-105%); }
+.roll-link:hover .roll::after { transform: none; }
+
+/* Two-line burger that folds into an X */
+.burger > span { transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1); }
+.burger[data-open='true'] > span:first-child { transform: translateY(3.75px) rotate(45deg); }
+.burger[data-open='true'] > span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+
+/* Footer wordmark: letters lift and ink in under the pointer */
+.footer-char { display: inline-block; transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.4s; }
+@media (hover: hover) {
+  .footer-char:hover { transform: translateY(-14%); color: #111; }
+  .dark .footer-char:hover { color: #fff; }
+}
+
+/* Code-token accent inside headings: `history[]`, `<work />` */
+.code-accent {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 500;
+  font-size: 0.86em;
+  letter-spacing: -0.04em;
+  color: #6b7280;
+}
+.dark .code-accent { color: #9ca3af; }
+
+/* Terminal caret */
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.15em;
+  vertical-align: -0.15em;
+  background: currentColor;
+  opacity: 0.85;
+  animation: caret 1.1s steps(1) infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
+
+/* Hollow display type */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #111827;
+}
+.dark .text-outline { -webkit-text-stroke-color: rgba(255, 255, 255, 0.85); }
+@media (min-width: 1024px) { .text-outline { -webkit-text-stroke-width: 2px; } }
+
+/* Buttons that fill with a rising circle on hover */
+.btn-fill {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.5s cubic-bezier(0.19, 1, 0.22, 1), border-color 0.5s;
+}
+.btn-fill::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 100%;
+  width: 150%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #111;
+  transform: translate(-50%, 0) scale(0);
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.btn-fill:hover::before { transform: translate(-50%, -50%) scale(1); }
+.dark .btn-fill::before { background: #fff; }
+.dark .btn-fill:hover { color: #111; }
+.btn-fill-ghost:hover { color: #fff; border-color: #111; }
+/* Primary (solid) buttons invert on hover instead of filling with the same colour */
+.btn-fill-primary { border: 1px solid #111; }
+.btn-fill-primary::before { background: #fff; }
+.btn-fill-primary:hover { color: #111; }
+.dark .btn-fill-primary { border-color: #fff; }
+.dark .btn-fill-primary::before { background: #111; }
+.dark .btn-fill-primary:hover { color: #fff; }
+.btn-fill:active { scale: 0.97; }
+.dark .btn-fill-ghost:hover { color: #111; border-color: #fff; }
+
+/* Underline that draws in from the left and exits to the right */
+.link-underline { position: relative; }
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.glass-card {
+  border-radius: 0.875rem;
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.3s, transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.glass-card:hover { border-color: #9ca3af; }
+.dark .glass-card { border-color: rgba(255, 255, 255, 0.07); background: rgba(22, 22, 24, 0.88); }
+.dark .glass-card:hover { border-color: #52525b; }
+
+.chip { transition: color 0.3s, border-color 0.3s, background-color 0.3s, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+.chip:hover { transform: translateY(-3px); color: #111; border-color: #111; }
+.dark .chip:hover { color: #fff; border-color: #fff; }
+
+/* Experience rows: content nudges right as the row is hovered */
+.exp-row > * { transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+.exp-row:hover > * { transform: translateX(6px); }
+
+@keyframes scroll-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+.animate-scroll-cue { animation: scroll-cue 1.8s cubic-bezier(0.76, 0, 0.24, 1) infinite; }
+
+/* Custom cursor replaces the native one on fine pointers */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
+
+/* Film grain — a static noise tile shifted in steps */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transform: translateZ(0);
+}
+.dark .grain { opacity: 0.07; }
+/* Touch devices: skip the overlay layer entirely */
+@media (pointer: coarse) { .grain { display: none; } }
+
+/* Circular theme reveal (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-cue, .caret { animation: none; }
+  .nav-inner, .nav-name, .nav-crumb, .roll > span, .roll::after, .burger > span { transition: none; }
+  .chip:hover, .exp-row:hover > * { transform: none; }
 }
 
 @supports (-webkit-touch-callout: none) {
