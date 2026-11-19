@@ -4,10 +4,12 @@ import Marquee from './motion/Marquee';
 import Magnetic from './motion/Magnetic';
 import { scrollToId } from '@/lib/motion';
 import SectionLabel from './SectionLabel';
+import BookingSlotPicker from './BookingSlotPicker';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
+  const [sent, setSent] = useState<{ name: string; email: string; message: string } | null>(null);
   // Google Maps pulls ~1MB of scripts; only load it when asked.
   const [mapOn, setMapOn] = useState(false);
 
@@ -21,7 +23,8 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
-        setStatus('sent');
+        setSent(formData);
+        setStatus('idle');
         setFormData({ name: '', email: '', message: '' });
       } else {
         setStatus('error');
@@ -105,29 +108,34 @@ const Contact = () => {
 
             {/* Form */}
             <div className="bg-white dark:bg-white/[0.03] p-4 sm:p-5 rounded-xl border border-gray-100 dark:border-gray-800 flex-1">
-              <p className="text-xs sm:text-[13px] font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Send a message</p>
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label htmlFor="name" className="block text-[11px] text-gray-400 dark:text-gray-500 font-medium mb-1 uppercase tracking-widest">Name</label>
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-3 py-2.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:border-gray-900 dark:focus:border-white focus:bg-white dark:focus:bg-white/10 focus:outline-none transition-colors" placeholder="Your name" />
+              {sent ? (
+                <BookingSlotPicker name={sent.name} email={sent.email} notes={sent.message} />
+              ) : (
+                <>
+                <p className="text-xs sm:text-[13px] font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Send a message</p>
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label htmlFor="name" className="block text-[11px] text-gray-400 dark:text-gray-500 font-medium mb-1 uppercase tracking-widest">Name</label>
+                      <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-3 py-2.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:border-gray-900 dark:focus:border-white focus:bg-white dark:focus:bg-white/10 focus:outline-none transition-colors" placeholder="Your name" />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-[11px] text-gray-400 dark:text-gray-500 font-medium mb-1 uppercase tracking-widest">Email</label>
+                      <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-3 py-2.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:border-gray-900 dark:focus:border-white focus:bg-white dark:focus:bg-white/10 focus:outline-none transition-colors" placeholder="your@email.com" />
+                    </div>
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-[11px] text-gray-400 dark:text-gray-500 font-medium mb-1 uppercase tracking-widest">Email</label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-3 py-2.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:border-gray-900 dark:focus:border-white focus:bg-white dark:focus:bg-white/10 focus:outline-none transition-colors" placeholder="your@email.com" />
+                    <label htmlFor="message" className="block text-[11px] text-gray-400 dark:text-gray-500 font-medium mb-1 uppercase tracking-widest">Message</label>
+                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={3} className="w-full px-3 py-2.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:border-gray-900 dark:focus:border-white focus:bg-white dark:focus:bg-white/10 focus:outline-none transition-colors resize-none sm:[rows:4]" placeholder="Tell me about your project..." />
                   </div>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-[11px] text-gray-400 dark:text-gray-500 font-medium mb-1 uppercase tracking-widest">Message</label>
-                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={3} className="w-full px-3 py-2.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:border-gray-900 dark:focus:border-white focus:bg-white dark:focus:bg-white/10 focus:outline-none transition-colors resize-none sm:[rows:4]" placeholder="Tell me about your project..." />
-                </div>
-                <button type="submit" disabled={status === 'sending'} className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors shadow-sm shadow-black/15 dark:shadow-white/10 disabled:opacity-60 disabled:cursor-not-allowed">
-                  <Send size={14} />
-                  {status === 'sending' ? 'Sending...' : status === 'sent' ? 'Sent!' : 'Send Message'}
-                </button>
-                {status === 'sent' && <p className="text-xs text-gray-900 dark:text-white text-center">Thanks! I'll get back to you soon.</p>}
-                {status === 'error' && <p className="text-xs text-red-500 dark:text-red-400 text-center">Something went wrong. Try emailing me directly.</p>}
-              </form>
+                  <button type="submit" disabled={status === 'sending'} className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors shadow-sm shadow-black/15 dark:shadow-white/10 disabled:opacity-60 disabled:cursor-not-allowed">
+                    <Send size={14} />
+                    {status === 'sending' ? 'Sending...' : 'Send Message'}
+                  </button>
+                  {status === 'error' && <p className="text-xs text-red-500 dark:text-red-400 text-center">Something went wrong. Try emailing me directly.</p>}
+                </form>
+                </>
+              )}
             </div>
           </div>
 
