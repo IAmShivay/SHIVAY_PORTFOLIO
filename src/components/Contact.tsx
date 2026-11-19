@@ -5,6 +5,8 @@ import Magnetic from './motion/Magnetic';
 import { scrollToId } from '@/lib/motion';
 import SectionLabel from './SectionLabel';
 import BookingSlotPicker from './BookingSlotPicker';
+import Wordmark from './Wordmark';
+import LocalTime from './LocalTime';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -50,7 +52,7 @@ const Contact = () => {
           ))}
         </Marquee>
       </a>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
         <SectionLabel index="05">Contact</SectionLabel>
         <h2 data-split className="text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-[-0.04em] text-gray-900 dark:text-white mb-3">Get in <span className="code-accent">touch()</span></h2>
         <p data-reveal className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 max-w-lg">
@@ -94,7 +96,7 @@ const Contact = () => {
             {/* Socials */}
             <div className="flex gap-2">
               {[
-                { icon: Github, href: "https://github.com/iAmShivaySharma", label: "GitHub" },
+                { icon: Github, href: "https://github.com/IAmShivay", label: "GitHub" },
                 { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:shivaysharmachemistry@gmail.com", label: "Email" },
               ].map(({ icon: Icon, href, label }, i) => (
@@ -203,15 +205,29 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-10 sm:mt-12 pt-5 sm:pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-          <p className="text-[11px] sm:text-xs text-gray-400 dark:text-gray-500">&copy; {new Date().getFullYear()} Shiv Kumar Sharma</p>
-          <p className="text-[11px] sm:text-xs text-gray-400 dark:text-gray-500">Built with React, Three.js & GSAP</p>
-          <button onClick={() => scrollToId('home')} className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white link-underline cursor-pointer">Back to top ↑</button>
+        {/* Sign-off */}
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-800">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Wordmark full className="text-[1.9rem] sm:text-[2.6rem]" />
+              <p className="mt-3 sm:mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-[0.16em] text-gray-400 dark:text-gray-500">
+                <span>Full-stack developer</span>
+                <span aria-hidden="true" className="text-gray-300 dark:text-gray-600">/</span>
+                <LocalTime />
+              </p>
+            </div>
+            <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:justify-end">
+              <a href="mailto:shivaysharmachemistry@gmail.com" className="link-underline text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Email</a>
+              <a href="https://github.com/IAmShivay" target="_blank" rel="noopener noreferrer" className="link-underline text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a>
+              <a href="https://linkedin.com/in/iamshivay" target="_blank" rel="noopener noreferrer" className="link-underline text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a>
+              <button onClick={() => scrollToId('home')} className="link-underline text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer">Back to top ↑</button>
+            </nav>
+          </div>
+          <div className="mt-8 sm:mt-10 py-4 sm:py-5 border-t border-gray-200/70 dark:border-gray-800/70 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500">
+            <p>&copy; {new Date().getFullYear()} Shiv Kumar Sharma</p>
+            <p className="font-mono uppercase tracking-[0.08em]">Set in Space Grotesk &amp; JetBrains Mono · Built with React, Three.js, GSAP</p>
+          </div>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden pt-4" aria-hidden="true">
-        <p data-split className="text-[15.5vw] lg:text-[13.25rem] font-bold tracking-[-0.06em] leading-[0.78] text-gray-900/[0.06] dark:text-white/[0.05] select-none whitespace-nowrap translate-y-[8%]">{"Shiv Sharma".split("").map((c, i) => <span key={i} className="footer-char">{c === " " ? " " : c}</span>)}</p>
       </div>
     </section>
   );
