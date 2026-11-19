@@ -31,7 +31,7 @@ const NowTicker = () => {
 };
 
 const socials = [
-  { icon: Github, href: "https://github.com/iAmShivaySharma", label: "GitHub" },
+  { icon: Github, href: "https://github.com/IAmShivay", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/in/iamshivay", label: "LinkedIn" },
   { icon: Mail, href: "mailto:shivaysharmachemistry@gmail.com", label: "Email" },
 ];

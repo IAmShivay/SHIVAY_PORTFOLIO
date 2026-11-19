@@ -18,7 +18,7 @@ const Projects = () => {
       description: "Multi-tenant CRM SaaS with lead collection, pipeline management, and real-time notifications. Containerized with Docker Compose and integrated n8n workflow automations.",
       tech: ["Next.js", "NestJS", "PostgreSQL", "Redis", "BullMQ", "Docker", "n8n"],
       highlights: ["Reduced manual follow-up by 60% with n8n automations", "Role-based dashboards with analytics and deal tracking", "Real-time notifications via WebSockets", "Team collaboration features"],
-      github: "https://github.com/iAmShivaySharma",
+      github: "https://github.com/IAmShivay",
       url: "crm-saas › pipeline", variant: "crm",
     },
     {
@@ -26,7 +26,7 @@ const Projects = () => {
       description: "Full-featured furniture store with product catalog, cart, order management, and multi-gateway payments serving 50K+ MAU. Deployed via Docker on GCP with CI/CD.",
       tech: ["MERN Stack", "Tailwind CSS", "GCP", "Docker", "Checkbook API", "SendGrid"],
       highlights: ["Product search with filters, wishlist, and review system", "Multi-gateway payments (Visa, Checkbook payout API)", "Responsive mobile-first UI with email notifications", "Deployed on GCP with Cloud CDN and Nginx"],
-      github: "https://github.com/iAmShivaySharma",
+      github: "https://github.com/IAmShivay",
       url: "furniture-store › living-room", variant: "shop",
     },
     {
@@ -34,7 +34,7 @@ const Projects = () => {
       description: "AI-powered document assistant with workspace-based RAG retrieval, tool-calling LLM loop, and local TF-IDF embeddings. Built with Next.js full-stack, sql.js for zero-dependency SQLite, and Groq LLM for chat and function calling.",
       tech: ["Next.js", "TypeScript", "sql.js", "Groq API", "TF-IDF", "Railway"],
       highlights: ["Workspace-scoped RAG with pre-filtered vector search for tenant isolation", "Tool-calling loop with strict schema validation, capped at 5 rounds", "Local TF-IDF embeddings (2048-dim) — no external API dependency", "Pure JS SQLite via sql.js for cross-platform zero-config deployment"],
-      github: "https://github.com/iAmShivaySharma",
+      github: "https://github.com/IAmShivay",
       live: "https://doc-assistant-production-da91.up.railway.app/",
       url: "ai-notes › workspace chat", variant: "ai",
     }
@@ -130,7 +130,7 @@ const Projects = () => {
         </div>
 
         <div className="mt-6 sm:mt-10 text-center">
-          <a href="https://github.com/iAmShivaySharma" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors link-underline">
+          <a href="https://github.com/IAmShivay" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors link-underline">
             View more on GitHub <ArrowUpRight size={14} />
           </a>
         </div>

@@ -233,7 +233,7 @@ const Navigation = () => {
               <LocalTime className="block font-mono text-[11px] text-gray-400 dark:text-gray-500 mt-1" />
             </div>
             <div className="flex gap-2 shrink-0">
-              <a href="https://github.com/iAmShivaySharma" target="_blank" rel="noopener noreferrer" tabIndex={isOpen ? 0 : -1} aria-label="GitHub" className="w-11 h-11 inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 active:scale-90 transition-transform"><Github size={18} /></a>
+              <a href="https://github.com/IAmShivay" target="_blank" rel="noopener noreferrer" tabIndex={isOpen ? 0 : -1} aria-label="GitHub" className="w-11 h-11 inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 active:scale-90 transition-transform"><Github size={18} /></a>
               <a href="https://linkedin.com/in/iamshivay" target="_blank" rel="noopener noreferrer" tabIndex={isOpen ? 0 : -1} aria-label="LinkedIn" className="w-11 h-11 inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 active:scale-90 transition-transform"><Linkedin size={18} /></a>
             </div>
           </div>
