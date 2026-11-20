@@ -1,8 +1,12 @@
 ﻿{
     "owner": {
-        "username": "IAmShivay"
+        "username": "iAmShivay",
+        "email": "shivaysharmachemistry@gmail.com"
     },
     "records": {
-        "TXT": "vc-domain-verify=www.shivay.is-a.dev,c9307d9c19e70f7a5db7"
+        "TXT": [
+            "vc-domain-verify=shivay.is-a.dev,c77151e0f17a4dba80c7",
+            "vc-domain-verify=www.shivay.is-a.dev,c9307d9c19e70f7a5db7"
+        ]
     }
 }
